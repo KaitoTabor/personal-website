@@ -5,7 +5,7 @@ import Waves from "@blocks/Backgrounds/Waves/Waves";
 
 const ExamplePage = () => {
     return (
-        <div className="relative z-0 p-10">
+        <div className="relative z-0 p-10 min-h-screen min-w-screen">
             <Waves
                 lineColor="rgba(0, 0, 0, 0.2)"
                 backgroundColor="rgba(16, 60, 101, 1)"
@@ -46,6 +46,10 @@ const ExamplePage = () => {
                     <div className="absolute top-[30vh] text-[4vh] font-kanji w-full flex justify-end right-[2vh] text-white md:top-[30vw] md:text-[4vw] md:right-[2vw]"> 
                         WPI/JESGO
                     </div>
+                    <div className="absolute top-[25vh] text-[4vh] font-kanji w-full flex justify-end right-[2vh] text-white md:top-[25vw] md:text-[4vw] md:right-[2vw]"> 
+                        CS&DS
+                    </div>
+                    
 
                     <CardContent className="relative z-10 p-6">
                     </CardContent>
