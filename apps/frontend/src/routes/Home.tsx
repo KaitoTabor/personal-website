@@ -5,10 +5,10 @@ import Waves from "@blocks/Backgrounds/Waves/Waves";
 
 const ExamplePage = () => {
     return (
-        <div className="relative z-0 p-10 bg-background">
+        <div className="relative z-0 p-10">
             <Waves
                 lineColor="rgba(0, 0, 0, 0.2)"
-                backgroundColor="rgba(0, 0, 0, 0.2)"
+                backgroundColor="rgba(16, 60, 101, 1)"
                 waveSpeedX={0.02}
                 waveSpeedY={0.01}
                 waveAmpX={40}
