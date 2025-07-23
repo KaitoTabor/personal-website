@@ -11,6 +11,7 @@ export default defineConfig({
         preserveSymlinks: true,
         alias: {
             "@": path.resolve(__dirname, "./src"),
+            "@blocks": path.resolve(__dirname, "./src/blocks"),
         },
     },
     server: {

@@ -1,11 +1,26 @@
 import React from 'react';
 import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
+import Waves from "@blocks/Backgrounds/Waves/Waves";
 
 const ExamplePage = () => {
     return (
-        <div className="p-10 bg-background">
-            <div className="flex items-center justify-center">
+        <div className="relative z-0 p-10 bg-background">
+            <Waves
+                lineColor="rgba(0, 0, 0, 0.2)"
+                backgroundColor="rgba(0, 0, 0, 0.2)"
+                waveSpeedX={0.02}
+                waveSpeedY={0.01}
+                waveAmpX={40}
+                waveAmpY={20}
+                friction={0.9}
+                tension={0.01}
+                maxCursorMove={0}
+                xGap={12}
+                yGap={36}
+                style={{ pointerEvents: "none" }}>
+            </Waves>
+            <div className="flex items-center justify-center relative z-10">
                 <Card className="rounded-none relative overflow-hidden w-[70vh] h-[49vh] md:w-[49vw] md:h-[70vw]">
                     <div className="flex items-center justify-center ">
                         <Card className='rounded-none absolute overflow-hidden w-[31.5vh] h-[45vh] top-[4vh] md:w-[45vw] md:h-[31.5vw] md:top-[4vw]'
