@@ -7,37 +7,59 @@ type CardData = {
   description: string;
   link: string;
   linkLabel: string;
+  /** Optional per-card icon (ReactNode or raw SVG string) */
+  icon?: React.ReactNode;
 };
 
+const icon = (
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M6 12h12M12 6v12" />
+  </svg>
+);
+
 const defaultCards: CardData[] = [
-  { image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', title: 'Ocean', description: 'A beautiful view of the ocean at sunset.', link: '#', linkLabel: 'Learn more' },
-  { image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', title: 'Forest', description: 'A tranquil forest with tall trees.', link: '#', linkLabel: 'Explore' },
-  { image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80', title: 'Mountains', description: 'Snow-capped mountains under a clear sky.', link: '#', linkLabel: 'Discover' },
-  { image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80', title: 'Desert', description: 'Golden sands stretching to the horizon.', link: '#', linkLabel: 'See more' },
-  { image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80', title: 'City', description: 'A bustling city skyline at night.', link: '#', linkLabel: 'Visit' },
-  { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80', title: 'Waves', description: 'Dynamic ocean waves in motion.', link: '#', linkLabel: 'Dive in' },
-  { image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80', title: 'Aurora', description: 'The northern lights shine brightly.', link: '#', linkLabel: 'View' },
+  { image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', title: 'Ocean', description: 'A beautiful view of the ocean at sunset.', link: '#', linkLabel: 'Learn more', icon },
+  { image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', title: 'Forest', description: 'A tranquil forest with tall trees.', link: '#', linkLabel: 'Explore', icon },
+  { image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80', title: 'Mountains', description: 'Snow-capped mountains under a clear sky.', link: '#', linkLabel: 'Discover', icon },
+  { image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80', title: 'Desert', description: 'Golden sands stretching to the horizon.', link: '#', linkLabel: 'See more', icon },
+  { image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80', title: 'City', description: 'A bustling city skyline at night.', link: '#', linkLabel: 'Visit', icon },
+  { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80', title: 'Waves', description: 'Dynamic ocean waves in motion.', link: '#', linkLabel: 'Dive in', icon },
+  { image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80', title: 'Aurora', description: 'The northern lights shine brightly.', link: '#', linkLabel: 'View', icon },
 ];
 
 let injected = false;
 const injectCSS = () => {
   if (typeof document === 'undefined' || injected) return;
   const style = document.createElement('style');
-  style.textContent = `/* AnimatedHoverDisclouser embedded styles */
-  .ahd-container { display:flex; justify-content:center; align-items:center; min-height:60vh; }
-  .ahd-list { --gap:8px; --base:clamp(2rem,8cqi,80px); --easing: linear(0 0%,0.1538 4.09%,0.2926 8.29%,0.4173 12.63%,0.5282 17.12%,0.6255 21.77%,0.7099 26.61%,0.782 31.67%,0.8425 37%,0.8887 42.23%,0.9257 47.79%,0.9543 53.78%,0.9752 60.32%,0.9883 67.11%,0.9961 75%,1 100%); --speed:.6s; display:grid; container-type:inline-size; gap:var(--gap); list-style:none; padding:0; margin:0; height:clamp(300px,40dvh,474px); width:820px; max-width:calc(100% - 4rem); transition:grid-template-columns var(--speed) var(--easing); }
-  .ahd-item { background:light-dark(#fff,#000); position:relative; overflow:hidden; min-width:var(--base); border-radius:8px; border:1px solid color-mix(in hsl, canvas, canvasText 50%); }
-  .ahd-item article { width:calc(var(--article-width) * 1px); height:100%; position:absolute; top:0; left:0; display:flex; flex-direction:column; justify-content:flex-end; gap:1rem; padding-inline:calc(var(--base) * 0.5 - 9px); padding-bottom:1rem; font-family:monospace; overflow:hidden; }
-  .ahd-item article h3 { position:absolute; top:1rem; left:calc(var(--base) * 0.5); transform-origin:0 50%; rotate:90deg; font-size:1rem; font-weight:300; text-transform:uppercase; font-family:monospace; opacity:.6; transition:opacity calc(var(--speed)*1.2) var(--easing); }
-  .ahd-item article p { font-size:13px; line-height:1.25; margin:0; opacity:0; transition:opacity calc(var(--speed)*1.2) var(--easing); text-wrap:balance; --opacity:.8; }
-  .ahd-item article a { position:absolute; bottom:1rem; height:18px; line-height:1; color:inherit; opacity:0; transition:opacity calc(var(--speed)*1.2) var(--easing); text-decoration:none; }
-  .ahd-item article a span { display:inline-block; line-height:18px; translate:calc(var(--base) * 0.5); font-weight:500; }
+  style.textContent = `/* Mobile-first (defaults use vh units based on iPhone 12 Pro height 844px) */
+  .ahd-container { display:flex; justify-content:center; align-items:center; min-height:40vh; }
+  .ahd-list { --gap:0.3vh; --base:clamp(3.79vh,8cqi,9.48vh); --easing: linear(0 0%,0.1538 4.09%,0.2926 8.29%,0.4173 12.63%,0.5282 17.12%,0.6255 21.77%,0.7099 26.61%,0.782 31.67%,0.8425 37%,0.8887 42.23%,0.9257 47.79%,0.9543 53.78%,0.9752 60.32%,0.9883 67.11%,0.9961 75%,1 100%); --speed:.6s; display:grid; container-type:inline-size; gap:var(--gap); list-style:none; padding:0; margin:0; height:clamp(35.55vh,40dvh,56.14vh); width:97vh; max-width:calc(100% - 7.58vh); transition:grid-template-columns var(--speed) var(--easing); }
+  .ahd-item { background:light-dark(#fff,#000); position:relative; overflow:hidden; min-width:var(--base); border-radius:0.95vh; border:0.12vh solid color-mix(in hsl, canvas, canvasText 50%); }
+  .ahd-item article { width:calc(var(--article-width-vh) * 1vh); height:100%; position:absolute; top:0; left:0; display:flex; flex-direction:column; justify-content:flex-end; gap:1.42vh; padding-inline:calc(var(--base) * 0.5 - 1.07vh); padding-bottom:1.90vh; font-family:monospace; overflow:hidden; }
+  .ahd-item article h3 { position:absolute; top:1.90vh; left:calc(var(--base) * 0.5); transform-origin:0 50%;  transform:rotate(90deg); font-size:1.90vh; font-weight:300; text-transform:uppercase; font-family:monospace; opacity:.6; transition:opacity calc(var(--speed)*1.2) var(--easing); pointer-events:none; }
+  .ahd-item article svg { width:1vh; height:1vh; fill:none; stroke:currentColor; opacity:.6; transition:opacity calc(var(--speed)*1.2) var(--easing); }
+  .ahd-item article p { font-size:1.3vh; margin:0 0 2.37vh 0; line-height:1.25; opacity:0; transition:opacity calc(var(--speed)*1.2) var(--easing); text-wrap:balance; --opacity:.8; }
+  .ahd-item article a { position:absolute; bottom:1.90vh; height:2.13vh; line-height:1; color:inherit; opacity:0; transition:opacity calc(var(--speed)*1.2) var(--easing); text-decoration:none; }
+  .ahd-item article a span { display:inline-flex; justify-content:flex-start; line-height:2.13vh; translate:-1.78vh; font-weight:500; }
   .ahd-item article img { position:absolute; pointer-events:none; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(1) brightness(1.5); scale:1.1; transition:filter calc(var(--speed)*1.2) var(--easing), scale calc(var(--speed)*1.2) var(--easing); mask:radial-gradient(100% 100% at 100% 0, #fff, #0000); }
-  .ahd-item[data-active='true'] article h3, .ahd-item[data-active='true'] article p, .ahd-item[data-active='true'] article a { opacity:1; }
+  .ahd-item[data-active='true'] article h3, .ahd-item[data-active='true'] article p, .ahd-item[data-active='true'] article a, .ahd-item[data-active='true'] article svg { opacity:1; }
   .ahd-item[data-active='true'] article p, .ahd-item[data-active='true'] article a, .ahd-item[data-active='true'] article img { transition-delay:calc(var(--speed)*0.25); }
   .ahd-item[data-active='true'] article img { filter:grayscale(0) brightness(1); scale:1; }
-  .ahd-item:focus-visible { outline:2px solid canvasText; outline-offset:2px; }
-  @media (max-width:768px){ .ahd-list { width:100%; } }
+  .ahd-item:focus-visible { outline:0.24vh solid canvasText; outline-offset:0.24vh; }
+
+
+  @media (min-width:768px){
+    .ahd-container { display:flex; justify-content:center; align-items:center; min-height:20vw; min-width:80vw }
+    .ahd-list { --gap:0.56vw; --base:clamp(2.22vw,8cqi,5.56vw); height:clamp(20.83vw,40dvh,32.92vw); width:56.94vw; max-width:calc(100% - 4.44vw); }
+    .ahd-item { border-radius:0.56vw; border:0.07vw solid color-mix(in hsl, canvas, canvasText 50%); }
+    .ahd-item article { width:calc(var(--article-width-vw) * 1vw); gap:0.83vw; padding-inline:calc(var(--base) * 0.5 - 0.63vw); padding-bottom:1.11vw; }
+    .ahd-item article h3 { top:1.11vw; font-size:1.11vw; }
+    .ahd-item article svg { width:1.25vw; height:1.25vw; }
+    .ahd-item article p { font-size:0.90vw; margin:0 0 1.39vw 0; }
+    .ahd-item article a { bottom:1.11vw; height:1.25vw; }
+    .ahd-item article a span { line-height:1.25vw; translate:-1.04vw; }
+    .ahd-item:focus-visible { outline:0.14vw solid canvasText; outline-offset:0.14vw; }
+  }
   `;
   document.head.appendChild(style);
   injected = true;
@@ -65,8 +87,11 @@ export const AnimatedHoverDisclouser: React.FC<AnimatedHoverDisclouserProps> = (
     const list = listRef.current; if (!list) return;
     const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'));
     if (!items.length) return;
-    const width = Math.max(...items.map(i => i.offsetWidth));
-    list.style.setProperty('--article-width', String(width));
+    const widestPx = Math.max(...items.map(i => i.offsetWidth));
+    const vwVal = (widestPx / window.innerWidth) * 100;
+    const vhVal = (widestPx / window.innerHeight) * 100;
+    list.style.setProperty('--article-width-vw', String(vwVal));
+    list.style.setProperty('--article-width-vh', String(vhVal));
   };
   useEffect(() => { measure(); window.addEventListener('resize', measure); return () => window.removeEventListener('resize', measure); });
   useEffect(() => { measure(); }, [data.length]);
@@ -108,7 +133,9 @@ export const AnimatedHoverDisclouser: React.FC<AnimatedHoverDisclouserProps> = (
               <img src={card.image} alt={card.title} loading="lazy" />
               <h3>{card.title}</h3>
               <p>{card.description}</p>
-              <a href={card.link} tabIndex={-1}><span>{card.linkLabel}</span></a>
+              <a href={card.link} tabIndex={-1} >
+                <span>{card.icon && card.icon} {card.linkLabel}</span>
+              </a>
             </article>
           </li>
         ))}

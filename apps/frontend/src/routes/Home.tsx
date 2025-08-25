@@ -30,6 +30,9 @@ const ExamplePage = () => {
                 <div className="flex items-center justify-center relative top-[2vh] md:top-[2vw] ">
                     <Card className="bg-[rgba(35,37,41,0.6)] w-[50vh] md:w-[95vw]">
                         <CardContent>
+                            <div className='flex items-center justify-center font-kanji text-white md:text-[4vw]'>
+                                Contents
+                            </div>
                             <AnimatedHoverDisclouser></AnimatedHoverDisclouser>
                         </CardContent>
                     </Card>
