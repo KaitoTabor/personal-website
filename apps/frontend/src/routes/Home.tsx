@@ -3,11 +3,15 @@ import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
 import HeroSection from "@/components/HeroSection";
+import DarkCard from "@/components/DarkCard";
+import AnimatedHoverDisclouser from "@/components/playpen/AnimatedHoverDisclouser";
+
+
 
 const ExamplePage = () => {
     return (
         <>
-            <div className="relative z-0 p-3 md:p-10 min-h-screen min-w-screen">
+            <div className="relative z--10 p-3 md:p-10 min-h-screen min-w-screen">
                 <Waves
                     lineColor="rgba(0, 0, 0, 0.2)"
                     backgroundColor="rgba(16, 60, 101, 1)"
@@ -23,13 +27,13 @@ const ExamplePage = () => {
                     style={{ pointerEvents: "none" }}>
                 </Waves>
                 <HeroSection />
-            </div>
-            <div >
-                <Card >
-                    <CardContent>
-
-                    </CardContent>
-                </Card>
+                <div className="flex items-center justify-center relative top-[2vh] md:top-[2vw] ">
+                    <Card className="bg-[rgba(35,37,41,0.6)] w-[50vh] md:w-[95vw]">
+                        <CardContent>
+                            <AnimatedHoverDisclouser></AnimatedHoverDisclouser>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </>
     );
