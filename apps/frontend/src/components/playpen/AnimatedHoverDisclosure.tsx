@@ -65,9 +65,9 @@ const injectCSS = () => {
   injected = true;
 };
 
-interface AnimatedHoverDisclouserProps { data?: CardData[]; className?: string; }
+interface AnimatedHoverDisclosureProps { data?: CardData[]; className?: string; }
 
-export const AnimatedHoverDisclouser: React.FC<AnimatedHoverDisclouserProps> = ({ data = defaultCards, className }) => {
+export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = ({ data = defaultCards, className }) => {
   const listRef = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -144,4 +144,4 @@ export const AnimatedHoverDisclouser: React.FC<AnimatedHoverDisclouserProps> = (
   );
 };
 
-export default AnimatedHoverDisclouser;
+export default AnimatedHoverDisclosure;
