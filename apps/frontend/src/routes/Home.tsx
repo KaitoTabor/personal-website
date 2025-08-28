@@ -3,8 +3,9 @@ import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
 import HeroSection from "@/components/HeroSection";
-import DarkCard from "@/components/DarkCard";
 import AnimatedHoverDisclosure from "@/components/playpen/AnimatedHoverDisclosure.js";
+import SkillsSection from '@/components/SkillSection.js';
+
 
 
 
@@ -34,10 +35,16 @@ const ExamplePage = () => {
                                 Contents
                             </div>
                             <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
-                            <div className="flex items-center justify-center relative md:top-[2vw]">
-                                <div className="font-kanji md:text-[4vw] text-white">
+                            <div className='flex items-center justify-center font-kanji text-white md:text-[4vw]'>
+
+                                About
+                            </div>
+                            <div className="flex flex-col items-center justify-center relative md:top-[2vw]">
+                                <div className="font-kanji justify-center md:text-[4vw] text-white">
                                     Skills
                                 </div>
+
+                                <SkillsSection />
                             </div>
                             <div className="flex items-center justify-center relative md:top-[2vw]">
                                 <div className="font-kanji md:text-[4vw] text-white">
