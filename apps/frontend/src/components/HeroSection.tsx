@@ -2,7 +2,7 @@ import {Card, CardContent} from "@/components/ui/card";
 
 const HeroSection = () => {
     return (
-        <div className="flex items-center justify-center relative z-10">
+        <div className="flex items-center justify-center p-[2vh]  md:p-[5vw] relative z-10">
             <Card className="rounded-none relative overflow-hidden w-[49vh] h-[70vh] md:w-[49vw] md:h-[70vw]">
                 <div className="flex items-center justify-center ">
                     <Card className='rounded-none absolute overflow-hidden w-[40vh] h-[31.5vh] top-[4vh] md:w-[45vw] md:h-[31.5vw] md:top-[4vw]'

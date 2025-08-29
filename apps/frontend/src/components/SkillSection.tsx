@@ -2,8 +2,8 @@ import { Card, CardContent } from "./ui/card";
 
 const Skill = ({ name, icon }) => {
     return (
-        <Card className=" m-0 p-2 text-white  md:text-[1.5vw] bg-[rgba(35,37,41,0.4)] border-[rgba(35,37,41,1)] shadow-[0_0_1vw_rgba(0,0,0,0.3)]">
-            <CardContent className="flex-row flex items-center justify-center m-0 p-0 gap-x-[1vw]">
+        <Card className=" m-0 p-[0.4vh] md:p-[0.6vw]   text-white  text-[1.5vh] md:text-[1.5vw] bg-[rgba(35,37,41,0.4)] border-[rgba(35,37,41,1)] shadow-[0_0_1vw_rgba(0,0,0,0.3)]">
+            <CardContent className="flex-row flex items-center justify-center m-0 p-0 gap-x-[0.7vh] md:gap-x-[1vw]">
                 {icon}
                 {name}
             </CardContent>
@@ -11,7 +11,7 @@ const Skill = ({ name, icon }) => {
     );
 }
 
-const iconTailwind = "inline-block rounded-lg md:w-[2.5vw] md:h-[2.5vw]";
+const iconTailwind = "inline-block rounded-lg  w-[2.5vh] h-[2.5vh] md:w-[2.5vw] md:h-[2.5vw]";
 
 const skills = [
     { name: "AWS", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" className={iconTailwind} /> },
@@ -34,7 +34,7 @@ const skills = [
 
 const SkillsSection = () => {
     return (
-        <div className="flex flex-row  flex-wrap items-center justify-center w-full gap-x-[1vw] gap-y-[0.5vw]">
+        <div className="flex flex-row  flex-wrap items-center justify-center w-full  gap-x-[0.5vh] gap-y-[0.5vh] md:gap-x-[1vw] md:gap-y-[0.5vw]">
             {skills.map((skill, index) => (
                 <Skill key={index} name={skill.name} icon={skill.icon} />
             ))}

@@ -11,8 +11,7 @@ import SkillsSection from '@/components/SkillSection.js';
 
 const ExamplePage = () => {
     return (
-        <>
-            <div className="relative z--10 p-3 md:p-10 min-h-screen min-w-screen">
+            <div className="relative z--10  min-h-screen  w-full">
                 <Waves
                     lineColor="rgba(0, 0, 0, 0.2)"
                     backgroundColor="rgba(16, 60, 101, 1)"
@@ -27,41 +26,40 @@ const ExamplePage = () => {
                     yGap={36}
                     style={{ pointerEvents: "none" }}>
                 </Waves>
-                <HeroSection />
-                <div className="flex items-center justify-center relative top-[2vh] md:top-[2vw] ">
-                    <Card className="bg-[rgba(35,37,41,0.6)] w-[50vh] md:w-[95vw]">
-                        <CardContent>
-                            <div className='flex items-center justify-center font-kanji text-white md:text-[4vw]'>
-                                Contents
+                <HeroSection></HeroSection>
+                <div className="absolute w-full h-[6vh] md:h-[6vw] bg-gradient-to-t from-[rgba(35,37,41,0.6)] to-transparent"></div>
+                {/* <div className="absolute w-full overflow-hidden h-[10vh] md:h-[6vw] bg-[radial-gradient(circle_at_50%_300%,rgba(35,37,41,0.6),rgba(35,37,41,0))]"></div> */}
+                {/* <div className="absolute w-1/8 h-[6vh] md:h-[6vw] bg-[rgba(35,37,41,1)] "></div> */}
+                <div className="flex items-center justify-center relative mt-[6vh] md:mt-[6vw] ">
+                    <div className="bg-gradient-to-b from-[rgba(35,37,41,0.6)] to-[rgba(35,37,41,0.9)] w-full">
+                        <div className='flex items-center justify-center font-kanji text-white text-[4vh] md:text-[4vw]'>
+                            Contents
+                        </div>
+                        <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
+                        <div className='flex items-center justify-center font-kanji text-white text-[4vh] md:text-[4vw]'>
+                            About
+                        </div>
+                        
+                        <div className="flex flex-col items-center justify-center relative mt-[2vh] md:mt-[2vw]">
+                            <div className="font-kanji justify-center text-[4vh] md:text-[4vw]  text-white">
+                                Skills
                             </div>
-                            <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
-                            <div className='flex items-center justify-center font-kanji text-white md:text-[4vw]'>
 
-                                About
+                            <SkillsSection />
+                        </div>
+                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
+                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
+                                Experiences
                             </div>
-                            <div className="flex flex-col items-center justify-center relative md:top-[2vw]">
-                                <div className="font-kanji justify-center md:text-[4vw] text-white">
-                                    Skills
-                                </div>
-
-                                <SkillsSection />
+                        </div>
+                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
+                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
+                                Projects
                             </div>
-                            <div className="flex items-center justify-center relative md:top-[2vw]">
-                                <div className="font-kanji md:text-[4vw] text-white">
-                                    Experiences
-                                </div>
-                            </div>
-                            <div className="flex items-center justify-center relative md:top-[2vw]">
-                                <div className="font-kanji md:text-[4vw] text-white">
-                                    Projects
-                                </div>
-                            </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </div>
                 </div>
-                
             </div>
-        </>
     );
 };
 
