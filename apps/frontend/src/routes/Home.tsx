@@ -49,7 +49,7 @@ const ExamplePage = () => {
                                 Skills
                             </div>
                             <div className=" relative flex justify-center items-center p-[1vh] md:p-[1vw] md:py-[1vw] md:px-[1vw] w-7/8 mt-[2vh] md:mt-[2vw]">
-                                <div className=" absolute inset-0 justify-center -z-1 bg-[rgba(175,226,249,0.3)] rounded-lg  "></div>
+                                <div className=" absolute inset-0 justify-center -z-1 bg-[rgba(175,226,249,0.6)] rounded-lg  "></div>
                                 <div className="flex justify-center w-full">
                                     <SkillsSection />
                                 </div>

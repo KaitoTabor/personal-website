@@ -2,7 +2,7 @@ import { Card, CardContent } from "./ui/card";
 
 const Skill = ({ name, icon }) => {
     return (
-        <Card className=" m-0 p-[0.4vh] md:p-[0.6vw]   text-white  text-[1.5vh] md:text-[1.5vw] bg-[rgba(35,37,41,0.4)] border-[rgba(35,37,41,1)] shadow-[0_0_1vw_rgba(0,0,0,0.3)]">
+        <Card className=" m-0 p-[0.4vh] md:p-[0.6vw]   text-white  text-[1.5vh] md:text-[1.5vw]  bg-gradient-to-bl from-[rgba(35,37,41,0.7)] to-[rgba(255,255,255,0.2)] border-[rgba(35,37,41,1)] shadow-[0_0_1vw_rgba(0,0,0,0.3)]">
             <CardContent className="flex-row flex items-center justify-center m-0 p-0 gap-x-[0.7vh] md:gap-x-[1vw]">
                 {icon}
                 {name}
