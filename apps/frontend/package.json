@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "@auth0/auth0-react": "^2.1.1",
+        "@radix-ui/react-slot": "^1.2.3",
         "@tailwindcss/vite": "^4.0.17",
         "axios": "^1.7.4",
         "class-variance-authority": "^0.7.1",
@@ -20,6 +21,7 @@
         "common": "*",
         "dotenv": "*",
         "dotenv-cli": "*",
+        "embla-carousel-react": "^8.6.0",
         "localforage": "^1.10.0",
         "lucide-react": "^0.525.0",
         "match-sorter": "^6.3.1",
