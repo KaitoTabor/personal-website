@@ -39,17 +39,22 @@ const GlowButton = ({
     };
 
     const handleMouseEnter = (target: HTMLElement) => {
+        // Pause the animation and apply hover effect
+        target.style.animation = 'none';
         target.style.boxShadow = `
-            0 0 0 3px ${glowColor},
-            0 0 15px ${glowColor}88,
-            0 0 30px ${glowColor}66,
-            0 0 45px ${glowColor}44,
-            inset 0 0 20px ${glowColor}33
+            0 0 0 4px ${glowColor},
+            0 0 20px ${glowColor}aa,
+            0 0 40px ${glowColor}88,
+            0 0 60px ${glowColor}66,
+            inset 0 0 30px ${glowColor}55
         `;
         target.style.background = `rgba(42,42,39,0.95)`;
+        target.style.transform = 'scale(1.02)';
     };
 
     const handleMouseLeave = (target: HTMLElement) => {
+        // Resume animation and return to normal state
+        target.style.animation = `${animationName} 3s ease-in-out infinite alternate`;
         target.style.boxShadow = `
             0 0 0 2px ${glowColor},
             0 0 10px ${glowColor}66,
@@ -58,11 +63,12 @@ const GlowButton = ({
             inset 0 0 10px ${glowColor}11
         `;
         target.style.background = `rgba(42,42,39,0.8)`;
+        target.style.transform = 'scale(1)';
     };
 
     const buttonContent = (
         <div 
-            className={`rounded-lg bg-[rgba(42,42,39,0.8)] cursor-pointer relative transition-all duration-500 hover:bg-[rgba(42,42,39,0.9)] ${className}`}
+            className={`rounded-lg bg-[rgba(42,42,39,0.8)] cursor-pointer relative transition-all duration-[800ms] hover:bg-[rgba(42,42,39,0.9)] hover:scale-105 ${className}`}
             style={{
                 boxShadow: `
                     0 0 0 2px ${glowColor},
