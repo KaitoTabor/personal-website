@@ -6,16 +6,16 @@ interface GlowButtonProps {
     glowColor?: string;
     onClick?: () => void;
     href?: string;
-    icon?: string | ReactNode; // CSS class for the icon OR React component (e.g., Lucide icon)
-    text?: string; // Text to display
-    iconSize?: string; // Icon size class (e.g., "md:text-[5vw]")
-    textSize?: string; // Text size class (e.g., "md:text-[2vw]")
+    icon?: string | ReactNode; 
+    text?: string; 
+    iconSize?: string; 
+    textSize?: string;
 }
 
 const GlowButton = ({ 
     children, 
     className = "", 
-    glowColor = "#0077b5", // LinkedIn blue as default
+    glowColor = "#0077b5", 
     onClick,
     href,
     icon,
@@ -23,23 +23,20 @@ const GlowButton = ({
     iconSize = "md:text-[5vw]",
     textSize = "md:text-[2vw]"
 }: GlowButtonProps) => {
-    const uniqueId = useId(); // Generate unique ID for each button
-    const animationName = `glowPulse-${uniqueId.replace(/:/g, '-')}`; // Create unique animation name
+    const uniqueId = useId(); 
+    const animationName = `glowPulse-${uniqueId.replace(/:/g, '-')}`; 
 
     const renderIcon = () => {
         if (!icon) return null;
         
-        // If icon is a string (CSS class), render as <i> element
         if (typeof icon === 'string') {
             return <i className={`${icon} ${iconSize} text-white`}></i>;
         }
         
-        // If icon is a React component (like Lucide), render it directly
         return <div className={`${iconSize} text-white`}>{icon}</div>;
     };
 
     const handleMouseEnter = (target: HTMLElement) => {
-        // Pause the animation and apply hover effect
         target.style.animation = 'none';
         target.style.boxShadow = `
             0 0 0 4px ${glowColor},
@@ -53,10 +50,9 @@ const GlowButton = ({
     };
 
     const handleMouseLeave = (target: HTMLElement) => {
-        // Resume animation and return to normal state
         target.style.animation = `${animationName} 3s ease-in-out infinite alternate`;
         target.style.boxShadow = `
-            0 0 0 2px ${glowColor},
+            0 0 0 2px ${glowColor}88,
             0 0 10px ${glowColor}66,
             0 0 20px ${glowColor}44,
             0 0 30px ${glowColor}22,
@@ -71,7 +67,7 @@ const GlowButton = ({
             className={`rounded-lg bg-[rgba(42,42,39,0.8)] cursor-pointer relative transition-all duration-[800ms] hover:bg-[rgba(42,42,39,0.9)] hover:scale-105 ${className}`}
             style={{
                 boxShadow: `
-                    0 0 0 2px ${glowColor},
+                    0 0 0 2px ${glowColor}88,
                     0 0 10px ${glowColor}66,
                     0 0 20px ${glowColor}44,
                     0 0 30px ${glowColor}22,
@@ -83,19 +79,16 @@ const GlowButton = ({
         >
             {children || (
                 <>
-                    {/* Fixed position icon */}
                     {icon && (
                         <div className="absolute left-[1vw] top-1/2 transform -translate-y-1/2 flex items-center justify-center">
                             {renderIcon()}
                         </div>
                     )}
-                    {/* Text with left margin to account for icon */}
                     {text && (
                         <div className={`flex items-center justify-center w-full h-full ${icon ? 'pl-[6vw]' : ''}`}>
                             <span className={`${textSize} text-white text-center`}>{text}</span>
                         </div>
                     )}
-                    {/* If no text, center the icon */}
                     {!text && icon && (
                         <div className="flex items-center justify-center w-full h-full">
                             {renderIcon()}
@@ -108,7 +101,7 @@ const GlowButton = ({
                     @keyframes ${animationName} {
                         0% {
                             box-shadow: 
-                                0 0 0 2px ${glowColor},
+                                0 0 0 2px ${glowColor}88,
                                 0 0 0px ${glowColor}66,
                                 0 0 0px ${glowColor}44,
                                 0 0 0px ${glowColor}22,
@@ -116,7 +109,7 @@ const GlowButton = ({
                         }
                         100% {
                             box-shadow: 
-                                0 0 0 2px ${glowColor},
+                                0 0 0 2px ${glowColor}88,
                                 0 0 10px ${glowColor}88,
                                 0 0 20px ${glowColor}66,
                                 0 0 30px ${glowColor}44,

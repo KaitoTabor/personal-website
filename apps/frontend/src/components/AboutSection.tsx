@@ -116,9 +116,9 @@ const AboutSection = () => {
                                     yOffset={yOffset}
                                 />
                             </div>
-                            <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[1vw] md:text-[1vw] md:max-w-[25vw] z-10">
+                            {/* <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[1vw] md:text-[1vw] md:max-w-[25vw] z-10">
                                 Japanese and American Bilingual Data Scientist and Developer from Palo Alto CA. Here to explore the world of Machine Learning and Deep Learning to create meaningful applications. カリフォルニア、パロアルト出身のバイリンガルデータサイエンティスト兼開発者。深層学習の世界を探求し、価値のあるプロダクトを作り出す為ここにいます。
-                            </div>
+                            </div> */}
                             <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[1.7vw] md:top-[11vw] md:text-[8vw]  z-10">
                                 kaiTo
                             </div>
@@ -132,35 +132,37 @@ const AboutSection = () => {
                     </Card>
                 </div>
                 <div className="flex justify-center mb-[5vw]">
-                    <div className="relative rounded-none shadow-0 overflow-hidden md:w-[50vw] md:h-[25vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
-                        <div className=" absolute justify-start text-white text-[1vw] md:w-[30vw] ">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
+                    <div className="relative rounded-none shadow-0 overflow-hidden w-[80vw] h-[45vw] md:w-[50vw] md:h-[25vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
+                        <div className="absolute inset-0 flex items-center justify-start">
+                            <div className="text-white text-[1.7vw] w-[45vw] md:px-[3.6vw] md:text-[1vw] md:w-[30vw] md:px-[3vw]">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
+                            </div>
                         </div>
                         <GlowButton 
-                            className="absolute left-[32vw] top-[3vw] h-[5vw] w-[15vw] text-[10vw]"
+                            className="absolute left-[49vw] top-[4vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[3vw] md:h-[5vw] md:w-[15vw] md:text-[10vw]"
                             glowColor="#0077b5"
                             href="https://www.linkedin.com/in/your-profile"
                             icon="devicon-linkedin-plain"
                             text="LinkedIn"
-                            iconSize="md:text-[5vw]"
-                            textSize="md:text-[2vw]"
+                            iconSize="text-[5vw] md:text-[5vw]"
+                            textSize="text-[3vw] md:text-[2vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[32vw] top-[5vw] h-[5vw] w-[15vw]"
+                            className="absolute left-[49vw] top-[9vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[5vw] md:h-[5vw] md:w-[15vw]"
                             glowColor="#6e5494"
                             href="https://github.com/your-username"
                             icon="devicon-github-original"
                             text="GitHub"
-                            iconSize="md:text-[5vw]"
-                            textSize="md:text-[2vw]"
+                            iconSize="text-[5vw] md:text-[5vw]"
+                            textSize="text-[3vw] md:text-[2vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[32vw] top-[7vw] h-[5vw] w-[15vw]"
+                            className="absolute left-[49vw] top-[15vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[7vw] md:h-[5vw] md:w-[15vw]"
                             glowColor="#E4405F"
                             href="https://www.instagram.com/your-username"
                             icon={<Instagram className="w-[5vw] h-[5vw]" />}
                             text="Instagram"
-                            textSize="md:text-[2vw]"
+                            textSize="text-[3vw] md:text-[2vw]"
                         />
                     </div>
                 </div>
@@ -183,11 +185,11 @@ const AboutSection = () => {
                         {images.map((image, index) => (
                             <CarouselItem key={index} className=" pl-[20vh] md:pl-0 basis-1/5 md:basis-1/5 ">
                                 <div className="relative group  h-[50vw] md:h-[25vw] ">
-                                    <div className="aspect-[3/4]  rounded-xl h-full ">
+                                    <div className="aspect-[3/4] rounded-lg h-full overflow-hidden">
                                         <img 
                                             src={image} 
                                             alt={`Gallery image ${index + 1}`}
-                                            className="w-full h-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
+                                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                                         />
                                     </div>
                                 </div>
