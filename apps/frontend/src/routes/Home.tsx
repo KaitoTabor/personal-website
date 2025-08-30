@@ -5,6 +5,7 @@ import Waves from "@blocks/Backgrounds/Waves/Waves";
 import HeroSection from "@/components/HeroSection";
 import AnimatedHoverDisclosure from "@/components/playpen/AnimatedHoverDisclosure.js";
 import SkillsSection from '@/components/SkillSection.js';
+import AboutSection from '@/components/AboutSection.js';
 
 
 
@@ -37,10 +38,14 @@ const ExamplePage = () => {
                             Contents
                         </div>
                         <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
-                        <div className='flex items-center justify-center mt-[2vh] md:mt-[2vw]'>
+                        <div className='flex flex-col items-center justify-center mt-[2vh] md:mt-[2vw]'>
                             <div className='font-kanji text-white text-[4vh] md:text-[4vw]'>
                                 About
                             </div>
+                            <div className='flex justify-center'>
+                                <AboutSection />
+                            </div>
+
                         </div>
 
 
