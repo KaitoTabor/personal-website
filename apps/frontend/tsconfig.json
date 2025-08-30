@@ -1,5 +1,5 @@
 {
-    "extends": "../../configs/typescript/tsconfig.json",
+    "extends": "../../configs/ts-config-custom/tsconfig.base.json",
     "compilerOptions": {
         "module": "ESNext",
         "lib": ["ES2020", "DOM", "DOM.Iterable"],
@@ -9,7 +9,8 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@blocks/*": ["./src/blocks/*"]
         }
     },
     "include": ["src"],
