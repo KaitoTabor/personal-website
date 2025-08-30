@@ -12,7 +12,7 @@ import AboutSection from '@/components/AboutSection.js';
 
 const ExamplePage = () => {
     return (
-            <div className="relative min-h-screen  w-full">
+            <div className="relative min-h-screen w-full overflow-x-hidden">
                 <Waves
                     className="absolute z-9"
                     lineColor="rgba(0, 0, 0, 0.2)"
