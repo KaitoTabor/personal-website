@@ -34,7 +34,7 @@ const ExamplePage = () => {
                 {/* <div className="absolute w-1/8 h-[6vh] md:h-[6vw] bg-[rgba(35,37,41,1)] "></div> */}
                 <div className="flex items-center z-11 justify-center relative mt-[6vh] md:mt-[6vw] ">
                     <div className="bg-gradient-to-b from-[rgba(35,37,41,0.6)] to-[rgba(35,37,41,0.9)] w-full">
-                        <div className='flex items-center justify-center font-kanji text-white text-[4vh] md:text-[4vw]'>
+                        <div className='flex items-center justify-center font-kanji text-white mb-[2vh] md:mb-[2vw] text-[4vh] md:text-[4vw]'>
                             Contents
                         </div>
                         <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
@@ -42,7 +42,7 @@ const ExamplePage = () => {
                             <div className='font-kanji text-white text-[4vh] md:text-[4vw]'>
                                 About
                             </div>
-                            <div className='flex justify-center'>
+                            <div className='flex justify-center  md:-mt-[3vw]'>
                                 <AboutSection />
                             </div>
 
