@@ -101,9 +101,9 @@ const AboutSection = () => {
         <div className="flex justify-center w-screen overflow-x-hidden">
             <div className="relative items-center w-full max-w-[100vh] md:max-w-[100vw] overflow-x-hidden">
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[5vw] ">
-                    <Card className="rounded-none relative overflow-hidden w-[90vw] h-[60vw] md:w-[60vw] md:h-[40vw] bg-white border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
+                    <Card className="rounded-none relative overflow-hidden w-[90vw] h-[60vw] md:w-[60vw] md:h-[40vw] bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[30vw] md:h-[20vw] bg-[rgb(9,24,99)] border-white z-10">
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[30vw] md:h-[20vw] bg-gradient-to-br from-[rgba(16,60,101,0.8)] to-[rgba(9,24,99,0.9)] border-white z-10">
                             </div>
                             <div className="relative z-20 w-full h-full">
                                 <CurvedLoop 
@@ -119,22 +119,22 @@ const AboutSection = () => {
                             {/* <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[1vw] md:text-[1vw] md:max-w-[25vw] z-10">
                                 Japanese and American Bilingual Data Scientist and Developer from Palo Alto CA. Here to explore the world of Machine Learning and Deep Learning to create meaningful applications. カリフォルニア、パロアルト出身のバイリンガルデータサイエンティスト兼開発者。深層学習の世界を探求し、価値のあるプロダクトを作り出す為ここにいます。
                             </div> */}
-                            <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[1.7vw] md:top-[11vw] md:text-[8vw]  z-10">
+                            <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[1.7vw] md:top-[11vw] md:text-[8vw] text-white z-10">
                                 kaiTo
                             </div>
-                            <div className="absolute  font-kanji w-full flex justify-end right-[0.15vw] top-[16.5vw] text-[12vw] md:right-[0.1vw] md:top-[11vw] md:text-[8vw]  z-10">
+                            <div className="absolute  font-kanji w-full flex justify-end right-[0.15vw] top-[16.5vw] text-[12vw] md:right-[0.1vw] md:top-[11vw] md:text-[8vw] text-white z-10">
                                 Tabor
                             </div>
-                            <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[44.8vw] md:text-[4vw]  z-10">
+                            <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[44.8vw] md:text-[4vw] text-white z-10">
                                 WPI-27
                             </div>
                         </CardContent>
                     </Card>
                 </div>
                 <div className="flex justify-center mb-[5vw]">
-                    <div className="relative shadow-0 overflow-hidden rounded-lg w-[80vw] h-[42vw] md:w-[54vw] md:h-[27vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
+                    <div className="relative shadow-0 overflow-hidden rounded-lg w-[80vw] h-[42vw] md:w-[54vw] md:h-[27vw] bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] border-[rgba(35,37,41,1)] border-3 z-10">
                         <div className="absolute inset-0 flex items-center justify-start left-[2vw] md:left-[1vw] md:mt-[1vw]">
-                            <div className="text-white text-[1.7vw] w-[43vw] mt-[2vw] md:mt-[2vw] md:px-[3.6vw] md:text-[1vw]  md:w-[30vw] md:px-[3vw]">
+                            <div className="text-gray-300 text-[1.7vw] w-[43vw] mt-[2vw] md:mt-[2vw] md:px-[3.6vw] md:text-[1vw]  md:w-[30vw] md:px-[3vw]">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
                             </div>
                         </div>
