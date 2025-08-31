@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import AnimatedHoverDisclosure from "@/components/playpen/AnimatedHoverDisclosure.js";
 import SkillsSection from '@/components/SkillSection.js';
 import AboutSection from '@/components/AboutSection.js';
+import ExperienceSection from '@/components/ExperienceSection.js';
 
 
 
@@ -63,6 +64,9 @@ const ExamplePage = () => {
                         <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
                             <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
                                 Experiences
+                            </div>
+                            <div>
+                                <ExperienceSection />
                             </div>
                         </div>
                         <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">

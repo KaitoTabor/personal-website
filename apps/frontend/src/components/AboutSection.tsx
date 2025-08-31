@@ -132,11 +132,14 @@ const AboutSection = () => {
                     </Card>
                 </div>
                 <div className="flex justify-center mb-[5vw]">
-                    <div className="relative rounded-none shadow-0 overflow-hidden w-[80vw] h-[45vw] md:w-[50vw] md:h-[25vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
-                        <div className="absolute inset-0 flex items-center justify-start">
-                            <div className="text-white text-[1.7vw] w-[45vw] md:px-[3.6vw] md:text-[1vw] md:w-[30vw] md:px-[3vw]">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
+                    <div className="relative shadow-0 overflow-hidden rounded-lg w-[80vw] h-[42vw] md:w-[54vw] md:h-[27vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
+                        <div className="absolute inset-0 flex items-center justify-start left-[2vw] md:left-[1vw] md:mt-[1vw]">
+                            <div className="text-white text-[1.7vw] w-[43vw] mt-[2vw] md:mt-[2vw] md:px-[3.6vw] md:text-[1vw]  md:w-[30vw] md:px-[3vw]">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
                             </div>
+                        </div>
+                        <div className=" absolute text-white top-[2vw] left-[2vw] text-[3vw] w-[45vw] md:mt-[1vw] md:left-[1vw] md:px-[3.6vw] md:text-[2vw] md:w-[30vw] md:px-[3vw]">
+                            About me
                         </div>
                         <GlowButton 
                             className="absolute left-[49vw] top-[4vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[3vw] md:h-[5vw] md:w-[15vw] md:text-[10vw]"
@@ -168,7 +171,17 @@ const AboutSection = () => {
                 </div>
 
                 
-                
+                <div className="text-white flex flex-col items-center justify-center">
+                    <div className="text-[4vw] md:text-[2vw] font-kanji mb-[0vw]">
+                        Pics
+                    </div>
+                    <div className="text-[1.5vw]">
+                        Some pictures of me,my interests, and random stuff
+
+                    </div>
+
+                    
+                </div>
 
                 <Carousel
                     setApi={setApi}
