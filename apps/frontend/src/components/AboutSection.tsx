@@ -103,7 +103,12 @@ const AboutSection = () => {
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
                     <Card className="rounded-none absolute left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[15vw] md:h-[10vw] bg-gradient-to-br from-[rgba(16,60,101,0.8)] to-[rgba(9,24,99,0.9)] border-white z-10">
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[15vw] md:h-[10vw] border-white z-10"
+                                 style={{
+                                     backgroundImage: "url('/Hero-image-ocean.jpg')",
+                                     backgroundSize: "cover",
+                                     backgroundPosition: "center",
+                                 }}>
                             </div>
                             <div className="relative z-20 w-full h-full">
                                 <CurvedLoop 
@@ -112,7 +117,7 @@ const AboutSection = () => {
                                     curveAmount={-500}
                                     direction="right"
                                     interactive={true}
-                                    className="fill-black"
+                                    className="fill-white"
                                     yOffset={yOffset}
                                 />
                             </div>
@@ -132,17 +137,18 @@ const AboutSection = () => {
                     </Card>
                 </div>
                 <div className="flex justify-center mb-[5vw]">
-                    <div className="absolute shadow-0 overflow-hidden rounded-lg w-[88vw] h-[46.2vw] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] border-[rgba(35,37,41,1)] border-3 z-10">
-                        <div className="absolute inset-0 flex items-center justify-start left-[2.2vw] md:left-[0.65vw] md:mt-[0.65vw]">
-                            <div className="text-gray-300 text-[1.87vw] w-[47.3vw] mt-[2.2vw] md:mt-[1.3vw] md:px-[2.34vw] md:text-[0.65vw]  md:w-[19.5vw] md:px-[1.95vw]">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilibus nunc.
+                    <div className="absolute shadow-0 overflow-hidden rounded-lg w-[88vw] h-[46.2vw] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
+                        <div className="absolute inset-0 flex items-center justify-start left-[2.2vw] md:left-[0.65vw]">
+                            <div className="text-gray-200 text-[1.87vw] w-[47.3vw] md:px-[2.34vw] md:text-[0.65vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems.
                             </div>
                         </div>
-                        <div className=" absolute text-white top-[2.2vw] left-[2.2vw] text-[3.3vw] w-[49.5vw] md:top-[0vw] md:mt-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw]">
+                        <div className="absolute text-white top-[2.2vw] left-[2.2vw] text-[3.3vw] w-[49.5vw] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">
                             About me
                         </div>
+                        
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[4.4vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw]"
+                            className="absolute left-[53.9vw] top-[4.4vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#0077b5"
                             href="https://www.linkedin.com/in/your-profile"
                             icon="devicon-linkedin-plain"
@@ -151,7 +157,7 @@ const AboutSection = () => {
                             textSize="text-[3.3vw] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[9.9vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw]"
+                            className="absolute left-[53.9vw] top-[9.9vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#6e5494"
                             href="https://github.com/your-username"
                             icon="devicon-github-original"
@@ -160,7 +166,7 @@ const AboutSection = () => {
                             textSize="text-[3.3vw] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[16.5vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw]"
+                            className="absolute left-[53.9vw] top-[16.5vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#E4405F"
                             href="https://www.instagram.com/your-username"
                             icon={<Instagram className="w-[5.5vw] h-[5.5vw] md:w-[3.25vw] md:h-[3.25vw]" />}
