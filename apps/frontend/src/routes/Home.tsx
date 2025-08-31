@@ -83,72 +83,81 @@ const ExamplePage = () => {
                         </div>
 
                         {/* About Section - Covers only hero area, not sidebar */}
-                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'about' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-[1vh] md:p-[2vw] flex flex-col transition-transform duration-1000 ${
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
                                 activeTab === 'about' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
-                                <div className="flex justify-between items-center mb-[1.5vh] md:mb-[1.5vw]">
-                                    <h2 className="font-kanji text-white text-[3vh] md:text-[3vw]">About</h2>
-                                    <button
-                                        onClick={() => setActiveTab(null)}
-                                        className="text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw]"
-                                    >
-                                        <svg className="w-[1.25vh] h-[1.25vh] md:w-[1.25vw] md:h-[1.25vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div className="flex-1 overflow-y-auto">
+                                {/* Absolutely positioned title */}
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">About</h2>
+                                
+                                {/* Absolutely positioned X button */}
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                
+                                {/* Content area covering full viewport */}
+                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden">
                                     <AboutSection />
                                 </div>
                             </div>
                         </div>
 
                         {/* Experience Section - Covers only hero area, not sidebar */}
-                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'experience' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-[1vh] md:p-[2vw] flex flex-col transition-transform duration-1000 ${
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
                                 activeTab === 'experience' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
-                                <div className="flex justify-between items-center mb-[1.5vh] md:mb-[1.5vw]">
-                                    <h2 className="font-kanji text-white text-[3vh] md:text-[3vw]">Experience</h2>
-                                    <button
-                                        onClick={() => setActiveTab(null)}
-                                        className="text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw]"
-                                    >
-                                        <svg className="w-[1.25vh] h-[1.25vh] md:w-[1.25vw] md:h-[1.25vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                        </button>
-                                </div>
-                                <div className="flex-1 overflow-y-auto">
+                                {/* Absolutely positioned title */}
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">Experience</h2>
+                                
+                                {/* Absolutely positioned X button */}
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                
+                                {/* Content area covering full viewport */}
+                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden">
                                     <ExperienceSection />
                                 </div>
                             </div>
                         </div>
 
                         {/* Skills Section - Covers only hero area, not sidebar */}
-                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'skills' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-[1vh] md:p-[2vw] flex flex-col transition-transform duration-1000 ${
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
                                 activeTab === 'skills' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
-                                <div className="flex justify-between items-center mb-[1.5vh] md:mb-[1.5vw]">
-                                    <h2 className="font-kanji text-white text-[3vh] md:text-[3vw]">Skills & Projects</h2>
-                                    <button
-                                        onClick={() => setActiveTab(null)}
-                                        className="text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw]"
-                                    >
-                                        <svg className="w-[1.25vh] h-[1.25vh] md:w-[1.25vw] md:h-[1.25vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <div className="flex-1 overflow-y-auto space-y-[2vh] md:space-y-[2vw]">
+                                {/* Absolutely positioned title */}
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">Skills & Projects</h2>
+                                
+                                {/* Absolutely positioned X button */}
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                
+                                {/* Content area covering full viewport */}
+                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden space-y-[2vh] md:space-y-[2vw]">
                                     {/* Skills Section */}
                                     <div>
                                         <h3 className="font-kanji text-white text-[2.5vh] md:text-[2.5vw] mb-[1vh] md:mb-[1vw]">Technical Skills</h3>
@@ -185,7 +194,7 @@ const ExamplePage = () => {
                     </div>
 
                     {/* Vertical Tabs Sidebar - Aligned with card height */}
-                    <div className="flex flex-col w-[2vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[86vh] md:h-[49vw] self-center">
+                    <div className="flex flex-col w-[2vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[86vh] md:h-[44.5vw] self-center">
                         {/* About Tab */}
                         <button
                             onClick={() => handleTabClick('about')}
