@@ -39,7 +39,7 @@ const ExamplePage = () => {
             {/* Main Layout Container */}
             <div className="flex h-screen relative z-10 items-center justify-center">
                 {/* Hero Section Container */}
-                <div className="relative flex items-center">
+                <div className="relative flex items-center -translate-x-[2vh] md:-translate-x-[2vw]">
                     {/* Hero Content Area */}
                     <div className="relative">
                         {/* Hero Section - Always visible when no tab is active */}
@@ -57,16 +57,16 @@ const ExamplePage = () => {
                         <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'about' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col transition-transform duration-1000 ${
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-[1vh] md:p-[2vw] flex flex-col transition-transform duration-1000 ${
                                 activeTab === 'about' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
-                                <div className="flex justify-between items-center mb-6">
-                                    <h2 className="font-kanji text-white text-2xl md:text-3xl">About</h2>
+                                <div className="flex justify-between items-center mb-[1.5vh] md:mb-[1.5vw]">
+                                    <h2 className="font-kanji text-white text-[3vh] md:text-[3vw]">About</h2>
                                     <button
                                         onClick={() => setActiveTab(null)}
-                                        className="text-white hover:text-gray-300 transition-colors p-2"
+                                        className="text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw]"
                                     >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-[1.25vh] h-[1.25vh] md:w-[1.25vw] md:h-[1.25vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
@@ -81,16 +81,16 @@ const ExamplePage = () => {
                         <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'experience' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col transition-transform duration-1000 ${
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-[1vh] md:p-[2vw] flex flex-col transition-transform duration-1000 ${
                                 activeTab === 'experience' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
-                                <div className="flex justify-between items-center mb-6">
-                                    <h2 className="font-kanji text-white text-2xl md:text-3xl">Experience</h2>
+                                <div className="flex justify-between items-center mb-[1.5vh] md:mb-[1.5vw]">
+                                    <h2 className="font-kanji text-white text-[3vh] md:text-[3vw]">Experience</h2>
                                     <button
                                         onClick={() => setActiveTab(null)}
-                                        className="text-white hover:text-gray-300 transition-colors p-2"
+                                        className="text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw]"
                                     >
-                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-[1.25vh] h-[1.25vh] md:w-[1.25vw] md:h-[1.25vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                         </button>
@@ -103,7 +103,7 @@ const ExamplePage = () => {
                     </div>
 
                     {/* Vertical Tabs Sidebar - Aligned with card height */}
-                    <div className="flex flex-col w-12 md:w-16 bg-white shadow-lg border-l border-gray-200 h-[70vh] md:h-[49vw] self-center">
+                    <div className="flex flex-col w-[2vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[70vh] md:h-[49vw] self-center">
                         {/* About Tab */}
                         <button
                             onClick={() => handleTabClick('about')}
@@ -112,7 +112,7 @@ const ExamplePage = () => {
                             }`}
                         >
                             <div className="transform -rotate-90 whitespace-nowrap">
-                                <span className="font-kanji text-gray-700 text-sm md:text-lg">About</span>
+                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw]">About</span>
                             </div>
                         </button>
 
@@ -124,7 +124,7 @@ const ExamplePage = () => {
                             }`}
                         >
                             <div className="transform -rotate-90 whitespace-nowrap">
-                                <span className="font-kanji text-gray-700 text-sm md:text-lg">Experience</span>
+                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw]">Experience</span>
                             </div>
                         </button>
                     </div>
