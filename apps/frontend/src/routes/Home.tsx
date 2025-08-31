@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
@@ -8,75 +8,130 @@ import SkillsSection from '@/components/SkillSection.js';
 import AboutSection from '@/components/AboutSection.js';
 import ExperienceSection from '@/components/ExperienceSection.js';
 
-
-
+type TabType = 'about' | 'skills' | 'experience' | 'projects';
 
 const ExamplePage = () => {
-    return (
-            <div className="relative min-h-screen w-full overflow-x-hidden">
-                <Waves
-                    className="absolute z-9"
-                    lineColor="rgba(0, 0, 0, 0.2)"
-                    backgroundColor="rgba(16, 60, 101, 1)"
-                    waveSpeedX={0.02}
-                    waveSpeedY={0.01}
-                    waveAmpX={40}
-                    waveAmpY={20}
-                    friction={0.9}
-                    tension={0.01}
-                    maxCursorMove={0}
-                    xGap={12}
-                    yGap={36}
-                    style={{ pointerEvents: "none" }}>
-                </Waves>
-                <HeroSection></HeroSection>
-                <div className="absolute w-full z-11 h-[6vh] md:h-[6vw] bg-gradient-to-t from-[rgba(35,37,41,0.6)] to-transparent"></div>
-                {/* <div className="absolute w-full overflow-hidden h-[10vh] md:h-[6vw] bg-[radial-gradient(circle_at_50%_300%,rgba(35,37,41,0.6),rgba(35,37,41,0))]"></div> */}
-                {/* <div className="absolute w-1/8 h-[6vh] md:h-[6vw] bg-[rgba(35,37,41,1)] "></div> */}
-                <div className="flex items-center z-11 justify-center relative mt-[6vh] md:mt-[6vw] ">
-                    <div className="bg-gradient-to-b from-[rgba(35,37,41,0.6)] to-[rgba(35,37,41,0.9)] w-full">
-                        <div className='flex items-center justify-center font-kanji text-white mb-[2vh] md:mb-[2vw] text-[4vh] md:text-[4vw]'>
-                            Contents
-                        </div>
-                        <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
-                        <div className='flex flex-col items-center justify-center mt-[2vh] md:mt-[2vw]'>
-                            <div className='font-kanji text-white text-[4vh] md:text-[4vw]'>
-                                About
-                            </div>
-                            <div className='flex justify-center  md:-mt-[3vw]'>
-                                <AboutSection />
-                            </div>
+    const [activeTab, setActiveTab] = useState<TabType>('about');
 
-                        </div>
-
-
-                        <div className="flex flex-col items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji justify-center text-[4vh] md:text-[4vw]  text-white">
+    const renderTabContent = () => {
+        switch (activeTab) {
+            case 'about':
+                return (
+                    <div className="p-4">
+                        <AboutSection />
+                    </div>
+                );
+            case 'skills':
+                return (
+                    <div className="p-4">
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="font-kanji text-white text-[4vh] md:text-[3vw] mb-4">
                                 Skills
                             </div>
-                            <div className=" relative flex justify-center items-center p-[1vh] md:p-[1vw] md:py-[1vw] md:px-[1vw] w-7/8 mt-[2vh] md:mt-[2vw]">
-                                <div className=" absolute inset-0 justify-center -z-1 bg-[rgba(175,226,249,0.6)] rounded-lg  "></div>
-                                <div className="flex justify-center w-full">
+                            <div className="relative flex justify-center items-center p-[1vh] md:p-[1vw] w-full">
+                                <div className="absolute inset-0 bg-[rgba(175,226,249,0.6)] rounded-lg"></div>
+                                <div className="flex justify-center w-full relative z-10">
                                     <SkillsSection />
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
-                                Experiences
+                    </div>
+                );
+            case 'experience':
+                return (
+                    <div className="p-4">
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="font-kanji text-white text-[4vh] md:text-[3vw] mb-4">
+                                Experience
                             </div>
-                            <div>
-                                <ExperienceSection />
-                            </div>
+                            <ExperienceSection />
                         </div>
-                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
+                    </div>
+                );
+            case 'projects':
+                return (
+                    <div className="p-4">
+                        <div className="flex flex-col items-center justify-center">
+                            <div className="font-kanji text-white text-[4vh] md:text-[3vw] mb-4">
                                 Projects
+                            </div>
+                            <div className="text-white text-center">
+                                Projects section coming soon...
                             </div>
                         </div>
                     </div>
+                );
+            default:
+                return null;
+        }
+    };
+
+    return (
+        <div className="relative min-h-screen w-full flex overflow-hidden">
+            {/* Wave background */}
+            <Waves
+                className="absolute inset-0 z-0"
+                lineColor="rgba(0, 0, 0, 0.2)"
+                backgroundColor="rgba(16, 60, 101, 1)"
+                waveSpeedX={0.02}
+                waveSpeedY={0.01}
+                waveAmpX={40}
+                waveAmpY={20}
+                friction={0.9}
+                tension={0.01}
+                maxCursorMove={0}
+                xGap={12}
+                yGap={36}
+                style={{ pointerEvents: "none" }}
+            />
+            
+            {/* Left side - Hero Section (fixed) */}
+            <div className="w-1/2 h-screen relative z-10 flex items-center justify-center">
+                <HeroSection />
+            </div>
+            
+            {/* Right side - Tab content area */}
+            <div className="w-1/2 h-screen relative z-10 flex flex-col">
+                {/* Browser-style tabs */}
+                <div className="flex bg-[rgba(35,37,41,0.9)] border-b border-[rgba(255,255,255,0.2)]">
+                    {[
+                        { id: 'about', label: 'About' },
+                        { id: 'skills', label: 'Skills' },
+                        { id: 'experience', label: 'Experience' },
+                        { id: 'projects', label: 'Projects' }
+                    ].map((tab) => (
+                        <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id as TabType)}
+                            className={`px-6 py-3 text-sm font-medium relative transition-all duration-200 ${
+                                activeTab === tab.id
+                                    ? 'bg-[rgba(255,255,255,0.1)] text-white border-b-2 border-blue-400'
+                                    : 'text-gray-300 hover:text-white hover:bg-[rgba(255,255,255,0.05)]'
+                            }`}
+                            style={{
+                                clipPath: activeTab === tab.id 
+                                    ? 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)'
+                                    : 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)'
+                            }}
+                        >
+                            <span className="relative z-10">{tab.label}</span>
+                            {activeTab === tab.id && (
+                                <div className="absolute inset-0 bg-[rgba(16,60,101,0.8)] -z-10" 
+                                     style={{
+                                         clipPath: 'polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%)'
+                                     }} 
+                                />
+                            )}
+                        </button>
+                    ))}
+                </div>
+                
+                {/* Tab content */}
+                <div className="flex-1 overflow-y-auto bg-gradient-to-b from-[rgba(35,37,41,0.6)] to-[rgba(35,37,41,0.9)]">
+                    {renderTabContent()}
                 </div>
             </div>
+        </div>
     );
 };
 
