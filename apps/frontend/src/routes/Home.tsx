@@ -13,7 +13,41 @@ type TabType = 'about' | 'experience' | 'skills' | null;
 const ExamplePage = () => {
     const [activeTab, setActiveTab] = useState<TabType>(null);
     const [showResumePopup, setShowResumePopup] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const resumePopupRef = useRef<HTMLDivElement>(null);
+
+    // Loading screen management
+    useEffect(() => {
+        const startTime = Date.now();
+        const minLoadTime = 3000; // 3 seconds minimum
+        
+        const handleLoad = () => {
+            const elapsedTime = Date.now() - startTime;
+            const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+            
+            setTimeout(() => {
+                setIsLoading(false);
+            }, remainingTime);
+        };
+
+        // Check if page is already loaded
+        if (document.readyState === 'complete') {
+            handleLoad();
+        } else {
+            // Wait for all resources to load
+            window.addEventListener('load', handleLoad);
+            
+            // Fallback timeout in case load event doesn't fire
+            const fallbackTimeout = setTimeout(() => {
+                handleLoad();
+            }, 8000); // 8 second max loading time
+            
+            return () => {
+                window.removeEventListener('load', handleLoad);
+                clearTimeout(fallbackTimeout);
+            };
+        }
+    }, []);
 
     // Close popup when clicking outside
     useEffect(() => {
@@ -47,7 +81,50 @@ const ExamplePage = () => {
     };
 
     return (
-        <div className="relative min-h-screen w-full overflow-hidden">
+        <>
+            {/* Loading Screen */}
+            {isLoading && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+                    {/* Animated Ocean Background for Loading */}
+                    <div 
+                        className="absolute inset-0"
+                        style={{
+                            backgroundImage: "url('/Hero-image-ocean.jpg')",
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            filter: 'brightness(0.3) blur(2px)'
+                        }}
+                    />
+                    
+                    {/* Loading Content */}
+                    <div className="relative z-10 flex flex-col items-center space-y-8">
+                        {/* Logo/Name */}
+                        <div className="text-center">
+                            <h1 className="font-kanji text-white text-[8vh] md:text-[8vw] mb-2 opacity-0 animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+                                KaiTo
+                            </h1>
+                            <h2 className="font-kanji text-cyan-300 text-[4vh] md:text-[4vw] opacity-0 animate-[fadeInUp_1s_ease-out_1s_forwards]">
+                                Tabor
+                            </h2>
+                        </div>
+                        
+                        {/* Loading Animation */}
+                        <div className="flex space-x-2 opacity-0 animate-[fadeInUp_1s_ease-out_1.5s_forwards]">
+                            <div className="w-3 h-3 bg-cyan-400 rounded-full animate-bounce"></div>
+                            <div className="w-3 h-3 bg-blue-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                            <div className="w-3 h-3 bg-teal-400 rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></div>
+                        </div>
+                        
+                        {/* Loading Text */}
+                        <p className="text-white/80 text-[2vh] md:text-[2vw] font-light loading-text">
+                            Loading Portfolio...
+                        </p>
+                    </div>
+                </div>
+            )}
+            
+            {/* Main Content */}
+            <div className={`relative min-h-screen w-full overflow-hidden transition-opacity duration-1000 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
             {/* Wave Background - only for hero section */}
             <Waves
                 className="absolute z-0"
@@ -320,6 +397,7 @@ const ExamplePage = () => {
                 </a>
             </div>
         </div>
+        </>
     );
 };
 
