@@ -43,17 +43,23 @@ const ExamplePage = () => {
                     {/* Hero Content Area */}
                     <div className="relative">
                         {/* Hero Section - Always visible when no tab is active */}
-                        <div className={`transition-all duration-500 ${
-                            activeTab ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 pointer-events-auto scale-100'
+                        <div className={`transition-all duration-1000 overflow-hidden ${
+                            activeTab ? 'opacity-100 pointer-events-none' : 'opacity-100 pointer-events-auto'
                         }`}>
-                            <HeroSection />
+                            <div className={`transition-transform duration-1000 ${
+                                activeTab ? 'translate-x-full' : 'translate-x-0'
+                            }`}>
+                                <HeroSection />
+                            </div>
                         </div>
 
                         {/* About Section - Covers only hero area, not sidebar */}
-                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] transition-all duration-500 overflow-y-auto ${
-                            activeTab === 'about' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none -translate-x-full'
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
+                            activeTab === 'about' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className="w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col">
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col transition-transform duration-1000 ${
+                                activeTab === 'about' ? 'translate-x-0' : 'translate-x-full'
+                            }`}>
                                 <div className="flex justify-between items-center mb-6">
                                     <h2 className="font-kanji text-white text-2xl md:text-3xl">About</h2>
                                     <button
@@ -72,10 +78,12 @@ const ExamplePage = () => {
                         </div>
 
                         {/* Experience Section - Covers only hero area, not sidebar */}
-                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] transition-all duration-500 overflow-y-auto ${
-                            activeTab === 'experience' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none -translate-x-full'
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[49vh] h-[70vh] md:w-[73.5vw] md:h-[49vw] overflow-hidden transition-all duration-1000 ${
+                            activeTab === 'experience' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className="w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col">
+                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] p-4 md:p-8 flex flex-col transition-transform duration-1000 ${
+                                activeTab === 'experience' ? 'translate-x-0' : 'translate-x-full'
+                            }`}>
                                 <div className="flex justify-between items-center mb-6">
                                     <h2 className="font-kanji text-white text-2xl md:text-3xl">Experience</h2>
                                     <button
