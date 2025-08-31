@@ -86,16 +86,16 @@ const ExamplePage = () => {
                         <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'about' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
                                 activeTab === 'about' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
                                 {/* Absolutely positioned title */}
-                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">About</h2>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">About</h2>
                                 
                                 {/* Absolutely positioned X button */}
                                 <button
                                     onClick={() => setActiveTab(null)}
-                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
                                 >
                                     <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -103,7 +103,7 @@ const ExamplePage = () => {
                                 </button>
                                 
                                 {/* Content area covering full viewport */}
-                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden">
+                                <div className="w-full h-full overflow-visible bg-[rgba(35,37,41,0.9)]">
                                     <AboutSection />
                                 </div>
                             </div>
@@ -113,16 +113,16 @@ const ExamplePage = () => {
                         <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'experience' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
                                 activeTab === 'experience' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
                                 {/* Absolutely positioned title */}
-                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">Experience</h2>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">Experience</h2>
                                 
                                 {/* Absolutely positioned X button */}
                                 <button
                                     onClick={() => setActiveTab(null)}
-                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
                                 >
                                     <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -130,7 +130,7 @@ const ExamplePage = () => {
                                 </button>
                                 
                                 {/* Content area covering full viewport */}
-                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden">
+                                <div className="w-full h-full overflow-visible bg-[rgba(35,37,41,0.9)]">
                                     <ExperienceSection />
                                 </div>
                             </div>
@@ -140,16 +140,16 @@ const ExamplePage = () => {
                         <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
                             activeTab === 'skills' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
                         }`}>
-                            <div className={`w-full h-full bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] relative transition-transform duration-1000 ${
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
                                 activeTab === 'skills' ? 'translate-x-0' : 'translate-x-full'
                             }`}>
                                 {/* Absolutely positioned title */}
-                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-20">Skills & Projects</h2>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">Skills & Projects</h2>
                                 
                                 {/* Absolutely positioned X button */}
                                 <button
                                     onClick={() => setActiveTab(null)}
-                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-20"
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
                                 >
                                     <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -157,7 +157,7 @@ const ExamplePage = () => {
                                 </button>
                                 
                                 {/* Content area covering full viewport */}
-                                <div className="w-full h-full p-[1vh] md:p-[2vw] pt-[6vh] md:pt-[6vw] overflow-hidden space-y-[2vh] md:space-y-[2vw]">
+                                <div className="w-full h-full overflow-visible bg-[rgba(35,37,41,0.9)] space-y-[2vh] md:space-y-[2vw] pt-[4vh] md:pt-[4vw] px-[1vh] md:px-[1vw]">
                                     {/* Skills Section */}
                                     <div>
                                         <h3 className="font-kanji text-white text-[2.5vh] md:text-[2.5vw] mb-[1vh] md:mb-[1vw]">Technical Skills</h3>

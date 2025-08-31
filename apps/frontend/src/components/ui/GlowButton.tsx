@@ -80,12 +80,12 @@ const GlowButton = ({
             {children || (
                 <>
                     {icon && (
-                        <div className="absolute left-[1vw] top-1/2 transform -translate-y-1/2 flex items-center justify-center">
+                        <div className="absolute left-[1vw] md:left-[0.5vw] top-1/2 transform -translate-y-1/2 flex items-center justify-center">
                             {renderIcon()}
                         </div>
                     )}
                     {text && (
-                        <div className={`flex items-center justify-center w-full h-full ${icon ? 'pl-[6vw]' : ''}`}>
+                        <div className={`flex items-center justify-center w-full h-full ${icon ? 'pl-[6vw] md:pl-[3vw]' : ''}`}>
                             <span className={`${textSize} text-white text-center`}>{text}</span>
                         </div>
                     )}
