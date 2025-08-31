@@ -38,7 +38,57 @@ const ExamplePage = () => {
 
             {/* Main Layout Container */}
             <div className="flex h-screen relative z-10">
-                {/* Vertical Tabs Sidebar */}
+                {/* Main Content Area */}
+                <div className="flex-1 relative">
+                    {/* Hero Section - Always visible when no tab is active */}
+                    <div className={`absolute inset-0 transition-all duration-500 ${
+                        activeTab ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 pointer-events-auto scale-100'
+                    }`}>
+                        <HeroSection />
+                    </div>
+
+                    {/* About Section */}
+                    <div className={`absolute inset-0 transition-all duration-500 overflow-y-auto ${
+                        activeTab === 'about' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none -translate-x-full'
+                    }`}>
+                        <div className="min-h-full bg-gradient-to-b from-[rgba(35,37,41,0.8)] to-[rgba(35,37,41,0.95)] p-4 md:p-8">
+                            <div className="flex justify-between items-center mb-6">
+                                <h2 className="font-kanji text-white text-3xl md:text-4xl">About</h2>
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="text-white hover:text-gray-300 transition-colors p-2"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <AboutSection />
+                        </div>
+                    </div>
+
+                    {/* Experience Section */}
+                    <div className={`absolute inset-0 transition-all duration-500 overflow-y-auto ${
+                        activeTab === 'experience' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none -translate-x-full'
+                    }`}>
+                        <div className="min-h-full bg-gradient-to-b from-[rgba(35,37,41,0.8)] to-[rgba(35,37,41,0.95)] p-4 md:p-8">
+                            <div className="flex justify-between items-center mb-6">
+                                <h2 className="font-kanji text-white text-3xl md:text-4xl">Experience</h2>
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="text-white hover:text-gray-300 transition-colors p-2"
+                                >
+                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <ExperienceSection />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Vertical Tabs Sidebar - Moved to Right */}
                 <div className="flex flex-col w-16 md:w-20 bg-black bg-opacity-30 backdrop-blur-sm">
                     {/* About Tab */}
                     <button
@@ -63,56 +113,6 @@ const ExamplePage = () => {
                             <span className="font-kanji text-white text-lg md:text-xl">Experience</span>
                         </div>
                     </button>
-                </div>
-
-                {/* Main Content Area */}
-                <div className="flex-1 relative">
-                    {/* Hero Section - Always visible when no tab is active */}
-                    <div className={`absolute inset-0 transition-all duration-500 ${
-                        activeTab ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 pointer-events-auto scale-100'
-                    }`}>
-                        <HeroSection />
-                    </div>
-
-                    {/* About Section */}
-                    <div className={`absolute inset-0 transition-all duration-500 overflow-y-auto ${
-                        activeTab === 'about' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none translate-x-full'
-                    }`}>
-                        <div className="min-h-full bg-gradient-to-b from-[rgba(35,37,41,0.8)] to-[rgba(35,37,41,0.95)] p-4 md:p-8">
-                            <div className="flex justify-between items-center mb-6">
-                                <h2 className="font-kanji text-white text-3xl md:text-4xl">About</h2>
-                                <button
-                                    onClick={() => setActiveTab(null)}
-                                    className="text-white hover:text-gray-300 transition-colors p-2"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <AboutSection />
-                        </div>
-                    </div>
-
-                    {/* Experience Section */}
-                    <div className={`absolute inset-0 transition-all duration-500 overflow-y-auto ${
-                        activeTab === 'experience' ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none translate-x-full'
-                    }`}>
-                        <div className="min-h-full bg-gradient-to-b from-[rgba(35,37,41,0.8)] to-[rgba(35,37,41,0.95)] p-4 md:p-8">
-                            <div className="flex justify-between items-center mb-6">
-                                <h2 className="font-kanji text-white text-3xl md:text-4xl">Experience</h2>
-                                <button
-                                    onClick={() => setActiveTab(null)}
-                                    className="text-white hover:text-gray-300 transition-colors p-2"
-                                >
-                                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                            <ExperienceSection />
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
