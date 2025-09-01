@@ -151,14 +151,9 @@ const SkillsSection = () => {
                                             ? 'bg-white/20 border-cyan-400/50 shadow-xl shadow-cyan-400/20 transform scale-[1.02] z-10' 
                                             : 'hover:bg-white/15 hover:border-cyan-400/30'
                                     }`}
-                                    onMouseEnter={() => {
-                                        setHoveredProject(index);
-                                        setSelectedProject(index);
-                                    }}
-                                    onMouseLeave={() => {
-                                        setHoveredProject(null);
-                                        setSelectedProject(null);
-                                    }}
+                                    onMouseEnter={() => setHoveredProject(index)}
+                                    onMouseLeave={() => setHoveredProject(null)}
+                                    onClick={() => setSelectedProject(selectedProject === index ? null : index)}
                                 >
                                     {/* Project Header - Always Visible */}
                                     <div className="flex justify-between items-start mb-[0.5vh] md:mb-[0.5vw]">
@@ -217,14 +212,25 @@ const SkillsSection = () => {
             {/* Project Popup Modal */}
             {selectedProject !== null && (
                 <div 
-                    className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-[2vh] md:p-[2vw] pointer-events-none opacity-0 animate-[fadeIn_300ms_ease-out_forwards]"
+                    className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-[2vh] md:p-[2vw] opacity-0 animate-[fadeIn_300ms_ease-out_forwards]"
+                    onClick={() => setSelectedProject(null)}
                 >
                     <div 
-                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-[2vh] md:p-[2vw] max-w-[90vw] md:max-w-[60vw] max-h-[80vh] overflow-y-auto pointer-events-auto opacity-0 translate-y-4 animate-[slideUpFade_500ms_ease-out_forwards]"
-                        onMouseEnter={() => setSelectedProject(selectedProject)}
-                        onMouseLeave={() => setSelectedProject(null)}
+                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-[2vh] md:p-[2vw] max-w-[90vw] md:max-w-[60vw] max-h-[80vh] overflow-y-auto opacity-0 translate-y-4 animate-[slideUpFade_500ms_ease-out_forwards] relative"
+                        onClick={(e) => e.stopPropagation()}
                     >
-                        <div className="flex justify-between items-start mb-[1vh] md:mb-[1vw] opacity-0 animate-[fadeInDown_300ms_ease-out_100ms_forwards]">
+                        {/* Close Button */}
+                        <button
+                            onClick={() => setSelectedProject(null)}
+                            className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] w-[3vh] h-[3vh] md:w-[2vw] md:h-[2vw] bg-white/10 hover:bg-white/20 border border-white/20 hover:border-red-400/50 rounded-full flex items-center justify-center text-white hover:text-red-400 transition-all duration-300 z-10"
+                            style={{ lineHeight: '1' }}
+                        >
+                            <div className="flex items-center justify-center w-full h-full text-[1.6vh] md:text-[1.3vw] font-bold transform translate-y-[-1px]">
+                                ×
+                            </div>
+                        </button>
+
+                        <div className="flex justify-between items-start mb-[1vh] md:mb-[1vw] opacity-0 animate-[fadeInDown_300ms_ease-out_100ms_forwards] pr-[4vh] md:pr-[3vw]">
                             <h3 className="text-white font-bold text-[2.5vh] md:text-[2vw] text-cyan-300">
                                 {projects[selectedProject].title}
                             </h3>
