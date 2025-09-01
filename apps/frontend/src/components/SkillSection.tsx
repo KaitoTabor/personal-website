@@ -70,7 +70,7 @@ const SkillsSection = () => {
 
     return (
         <div 
-            className="h-full w-full flex gap-[2vh] md:gap-[2vw] p-[2vh] md:p-[0vw]"
+            className="h-full w-full flex flex-col md:flex-row gap-[2vh] md:gap-[2vw] p-[2vh] md:p-[0vw]"
         >
             <style>{`
                 @keyframes fadeIn {

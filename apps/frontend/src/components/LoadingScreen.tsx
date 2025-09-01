@@ -1,185 +1,298 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 
 interface LoadingScreenProps {
-    onComplete: () => void;
+  onComplete?: () => void;
 }
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
-    const [isVisible, setIsVisible] = useState(true);
-    const [progress, setProgress] = useState(0);
-    const [fadeOut, setFadeOut] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        // Progress animation
-        const startTime = Date.now();
-        const duration = 2500;
-
-        const animateProgress = () => {
-            const elapsed = Date.now() - startTime;
-            const newProgress = Math.min((elapsed / duration) * 100, 100);
-            setProgress(newProgress);
-
-            if (newProgress < 100) {
-                requestAnimationFrame(animateProgress);
-            }
-        };
-
-        requestAnimationFrame(animateProgress);
-
-        // Exit after 3 seconds
-        setTimeout(() => {
-            setFadeOut(true);
-            setTimeout(() => {
-                setIsVisible(false);
-                onComplete();
-            }, 600); // Wait for fade out animation
-        }, 3000);
-
-    }, [onComplete]);
-
-    if (!isVisible) return null;
-
-    return (
-        <>
-            <style>{`
-                @keyframes logoEntrance {
-                    0% {
-                        opacity: 0;
-                        transform: scale(0.5) translateY(30px);
-                    }
-                    60% {
-                        transform: scale(1.1) translateY(0);
-                    }
-                    100% {
-                        opacity: 1;
-                        transform: scale(1) translateY(0);
-                    }
-                }
-
-                @keyframes waveEntrance {
-                    from {
-                        opacity: 0;
-                        transform: translateY(20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes textEntrance {
-                    from {
-                        opacity: 0;
-                        transform: translateY(15px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-
-                @keyframes wave {
-                    0%, 100% {
-                        transform: translateY(0);
-                    }
-                    50% {
-                        transform: translateY(-10px);
-                    }
-                }
-
-                .logo-entrance {
-                    animation: logoEntrance 1s ease-out forwards;
-                    opacity: 0;
-                }
-
-                .wave-entrance {
-                    animation: waveEntrance 0.8s ease-out 0.5s forwards;
-                    opacity: 0;
-                }
-
-                .text-entrance {
-                    animation: textEntrance 0.6s ease-out 1s forwards;
-                    opacity: 0;
-                }
-
-                .wave-animation {
-                    animation: wave 2s ease-in-out infinite alternate;
-                }
-            `}</style>
-            
-            <div 
-                ref={containerRef}
-                className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-600 ${
-                    fadeOut ? 'opacity-0' : 'opacity-100'
-                }`}
-                style={{
-                    background: 'linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%)'
-                }}
-            >
-                {/* Logo/Brand */}
-                <div className="mb-8 logo-entrance">
-                    <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-white/20 backdrop-blur-md border border-white/30 flex items-center justify-center">
-                        <span className="text-4xl md:text-5xl font-bold text-white font-kanji">
-                            KT
-                        </span>
-                    </div>
-                </div>
-
-                {/* Animated Waves */}
-                <div className="flex space-x-2 mb-8 wave-entrance">
-                    {[...Array(5)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="w-3 h-8 bg-white/80 rounded-full wave-animation"
-                            style={{ 
-                                animationDelay: `${i * 0.2}s`
-                            }}
-                        />
-                    ))}
-                </div>
-
-                {/* Loading Text */}
-                <div className="text-center text-entrance">
-                    <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-kanji">
-                        KaiTo Tabor
-                    </h2>
-                    <p className="text-white/70 text-sm md:text-base mb-6">
-                        Preparing your experience...
-                    </p>
-                    
-                    {/* Progress Bar */}
-                    <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
-                        <div 
-                            className="h-full bg-white/80 rounded-full transition-all duration-100 ease-out"
-                            style={{ width: `${progress}%` }}
-                        ></div>
-                    </div>
-                    
-                    {/* Progress Percentage */}
-                    <div className="mt-2 text-white/60 text-sm">
-                        {Math.round(progress)}%
-                    </div>
-                </div>
-
-                {/* Floating Particles */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    {[...Array(15)].map((_, i) => (
-                        <div
-                            key={i}
-                            className="absolute w-1 h-1 md:w-2 md:h-2 bg-white/20 rounded-full animate-pulse"
-                            style={{
-                                left: `${Math.random() * 100}%`,
-                                top: `${Math.random() * 100}%`,
-                                animationDelay: `${Math.random() * 3}s`,
-                                animationDuration: `${2 + Math.random() * 4}s`
-                            }}
-                        />
-                    ))}
-                </div>
+  return (
+    <div className="loading-screen">
+      <div className="ocean-container">
+        {/* Animated waves background */}
+        <div className="wave wave1"></div>
+        <div className="wave wave2"></div>
+        <div className="wave wave3"></div>
+        
+        {/* Loading content */}
+        <div className="loading-content">
+          <div className="bubble-container">
+            <div className="bubble bubble1"></div>
+            <div className="bubble bubble2"></div>
+            <div className="bubble bubble3"></div>
+            <div className="bubble bubble4"></div>
+            <div className="bubble bubble5"></div>
+          </div>
+          
+          <div className="loading-text">
+            <h1>Loading</h1>
+            <div className="dots">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
             </div>
-        </>
-    );
+          </div>
+          
+          <div className="progress-container">
+            <div className="progress-bar">
+              <div className="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .loading-screen {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: linear-gradient(135deg, #001f3f 0%, #003366 25%, #004080 50%, #0066cc 75%, #ffffff 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          overflow: hidden;
+        }
+
+        .ocean-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* Animated waves */
+        .wave {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 200%;
+          height: 200px;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 50%;
+          animation: wave-animation 6s ease-in-out infinite;
+        }
+
+        .wave1 {
+          animation-delay: 0s;
+          opacity: 0.3;
+        }
+
+        .wave2 {
+          animation-delay: 2s;
+          opacity: 0.2;
+          height: 150px;
+        }
+
+        .wave3 {
+          animation-delay: 4s;
+          opacity: 0.1;
+          height: 100px;
+        }
+
+        @keyframes wave-animation {
+          0%, 100% {
+            transform: translateX(-50%) rotate(0deg);
+          }
+          50% {
+            transform: translateX(-60%) rotate(180deg);
+          }
+        }
+
+        /* Loading content */
+        .loading-content {
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          color: white;
+        }
+
+        /* Floating bubbles */
+        .bubble-container {
+          position: absolute;
+          top: -200px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 400px;
+          height: 400px;
+        }
+
+        .bubble {
+          position: absolute;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          animation: bubble-float 4s ease-in-out infinite;
+        }
+
+        .bubble1 {
+          width: 20px;
+          height: 20px;
+          left: 10%;
+          animation-delay: 0s;
+        }
+
+        .bubble2 {
+          width: 15px;
+          height: 15px;
+          left: 30%;
+          animation-delay: 1s;
+        }
+
+        .bubble3 {
+          width: 25px;
+          height: 25px;
+          left: 50%;
+          animation-delay: 2s;
+        }
+
+        .bubble4 {
+          width: 12px;
+          height: 12px;
+          left: 70%;
+          animation-delay: 3s;
+        }
+
+        .bubble5 {
+          width: 18px;
+          height: 18px;
+          left: 85%;
+          animation-delay: 0.5s;
+        }
+
+        @keyframes bubble-float {
+          0%, 100% {
+            transform: translateY(400px) scale(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100px) scale(0);
+            opacity: 0;
+          }
+        }
+
+        /* Loading text */
+        .loading-text h1 {
+          font-size: 2.5rem;
+          font-weight: 300;
+          margin: 0 0 20px 0;
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+          letter-spacing: 3px;
+        }
+
+        .dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 40px;
+        }
+
+        .dot {
+          width: 8px;
+          height: 8px;
+          background: white;
+          border-radius: 50%;
+          animation: dot-pulse 1.5s ease-in-out infinite;
+        }
+
+        .dot:nth-child(1) {
+          animation-delay: 0s;
+        }
+
+        .dot:nth-child(2) {
+          animation-delay: 0.5s;
+        }
+
+        .dot:nth-child(3) {
+          animation-delay: 1s;
+        }
+
+        @keyframes dot-pulse {
+          0%, 100% {
+            opacity: 0.3;
+            transform: scale(0.8);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+        }
+
+        /* Progress bar */
+        .progress-container {
+          width: 300px;
+          margin: 0 auto;
+        }
+
+        .progress-bar {
+          width: 100%;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 2px;
+          overflow: hidden;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-fill {
+          height: 100%;
+          background: linear-gradient(90deg, #ffffff 0%, #b3d9ff 50%, #ffffff 100%);
+          border-radius: 2px;
+          animation: progress-animation 3s ease-in-out infinite;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        @keyframes progress-animation {
+          0% {
+            width: 0%;
+            transform: translateX(-100%);
+          }
+          50% {
+            width: 100%;
+            transform: translateX(0%);
+          }
+          100% {
+            width: 0%;
+            transform: translateX(100%);
+          }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+          .loading-text h1 {
+            font-size: 2rem;
+          }
+          
+          .progress-container {
+            width: 250px;
+          }
+          
+          .bubble-container {
+            width: 300px;
+            height: 300px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .loading-text h1 {
+            font-size: 1.5rem;
+          }
+          
+          .progress-container {
+            width: 200px;
+          }
+        }
+      `}</style>
+    </div>
+  );
 };
 
 export default LoadingScreen;

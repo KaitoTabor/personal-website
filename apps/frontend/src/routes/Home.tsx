@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import LoadingScreen from '@/components/LoadingScreen';
+import LoadingScreen from '@/components/LoadingScreen.js';
 import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
@@ -20,41 +20,121 @@ const ExamplePage = () => {
     // Loading logic
     useEffect(() => {
         const startTime = Date.now();
-        const minLoadTime = 3000; // 3 seconds minimum
+        const minLoadTime = 2000; // 2 seconds minimum
 
-        const checkAllLoaded = () => {
-            // Check if all images are loaded
-            const images = document.querySelectorAll('img');
-            const imagePromises = Array.from(images).map(img => {
-                if (img.complete) return Promise.resolve();
-                return new Promise(resolve => {
-                    img.onload = resolve;
-                    img.onerror = resolve; // Even if image fails, continue
+        const checkAllLoaded = async () => {
+            try {
+                // Track all resource loading promises
+                const loadingPromises: Promise<void>[] = [];
+
+                // 1. Wait for document ready state
+                if (document.readyState !== 'complete') {
+                    await new Promise(resolve => {
+                        const handler = () => {
+                            if (document.readyState === 'complete') {
+                                document.removeEventListener('readystatechange', handler);
+                                resolve(void 0);
+                            }
+                        };
+                        document.addEventListener('readystatechange', handler);
+                    });
+                }
+
+                // 2. Check all IMG elements
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    if (!img.complete || img.naturalHeight === 0) {
+                        loadingPromises.push(new Promise(resolve => {
+                            const handleLoad = () => {
+                                img.removeEventListener('load', handleLoad);
+                                img.removeEventListener('error', handleLoad);
+                                resolve();
+                            };
+                            img.addEventListener('load', handleLoad);
+                            img.addEventListener('error', handleLoad);
+                        }));
+                    }
                 });
-            });
 
-            // Check if fonts are loaded
-            const fontPromise = document.fonts ? document.fonts.ready : Promise.resolve();
+                // 3. Preload critical background images
+                const criticalImages = [
+                    '/Hero-image-ocean.jpg',
+                    '/favicon.svg'
+                ];
 
-            // Wait for all resources
-            Promise.all([...imagePromises, fontPromise]).then(() => {
+                criticalImages.forEach(src => {
+                    loadingPromises.push(new Promise(resolve => {
+                        const img = new Image();
+                        img.onload = () => resolve();
+                        img.onerror = () => resolve(); // Continue even if image fails
+                        img.src = src;
+                    }));
+                });
+
+                // 4. Ensure custom fonts are loaded
+                if (document.fonts) {
+                    // Wait for fonts to be ready
+                    loadingPromises.push(
+                        document.fonts.ready.then(() => void 0)
+                    );
+                    
+                    // Specifically check for the kanji font
+                    const kanjiFont = new FontFace('kanji', "url('/fonts/SoukouMincho.ttf') format('truetype')");
+                    try {
+                        const loadedFont = await kanjiFont.load();
+                        document.fonts.add(loadedFont);
+                    } catch (error) {
+                        console.warn('Failed to load kanji font:', error);
+                    }
+                }
+
+                // 5. Wait for CSS files to be loaded
+                const styleSheets = Array.from(document.styleSheets);
+                styleSheets.forEach(sheet => {
+                    if (sheet.href && !sheet.disabled) {
+                        loadingPromises.push(new Promise(resolve => {
+                            if (sheet.cssRules || sheet.rules) {
+                                resolve(); // Already loaded
+                            } else {
+                                // Create a new link element to test loading
+                                const testLink = document.createElement('link');
+                                testLink.rel = 'stylesheet';
+                                testLink.href = sheet.href!;
+                                testLink.onload = () => resolve();
+                                testLink.onerror = () => resolve();
+                                // Don't actually add it, just test loading
+                            }
+                        }));
+                    }
+                });
+
+                // 6. Wait for any dynamic imports or lazy-loaded components
+                // Give a small buffer for React components to mount
+                loadingPromises.push(new Promise(resolve => setTimeout(resolve, 500)));
+
+                // Wait for all resources to load
+                await Promise.all(loadingPromises);
+
+                // Ensure minimum loading time for smooth experience
                 const elapsedTime = Date.now() - startTime;
                 const remainingTime = Math.max(0, minLoadTime - elapsedTime);
                 
-                // Ensure minimum loading time
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, remainingTime);
-            });
+                if (remainingTime > 0) {
+                    await new Promise(resolve => setTimeout(resolve, remainingTime));
+                }
+
+                setIsLoading(false);
+            } catch (error) {
+                console.warn('Error during resource loading:', error);
+                // Even if there's an error, don't get stuck loading forever
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+                setTimeout(() => setIsLoading(false), remainingTime);
+            }
         };
 
-        // Start checking when component mounts
-        if (document.readyState === 'complete') {
-            checkAllLoaded();
-        } else {
-            window.addEventListener('load', checkAllLoaded);
-            return () => window.removeEventListener('load', checkAllLoaded);
-        }
+        // Start the loading check
+        checkAllLoaded();
     }, []);
 
     const handleLoadingComplete = () => {
