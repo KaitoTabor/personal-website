@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import LoadingScreen from '@/components/LoadingScreen';
 import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
@@ -11,9 +12,54 @@ import ExperienceSection from '@/components/ExperienceSection.js';
 type TabType = 'about' | 'experience' | 'skills' | null;
 
 const ExamplePage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [activeTab, setActiveTab] = useState<TabType>(null);
     const [showResumePopup, setShowResumePopup] = useState(false);
     const resumePopupRef = useRef<HTMLDivElement>(null);
+
+    // Loading logic
+    useEffect(() => {
+        const startTime = Date.now();
+        const minLoadTime = 3000; // 3 seconds minimum
+
+        const checkAllLoaded = () => {
+            // Check if all images are loaded
+            const images = document.querySelectorAll('img');
+            const imagePromises = Array.from(images).map(img => {
+                if (img.complete) return Promise.resolve();
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve; // Even if image fails, continue
+                });
+            });
+
+            // Check if fonts are loaded
+            const fontPromise = document.fonts ? document.fonts.ready : Promise.resolve();
+
+            // Wait for all resources
+            Promise.all([...imagePromises, fontPromise]).then(() => {
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+                
+                // Ensure minimum loading time
+                setTimeout(() => {
+                    setIsLoading(false);
+                }, remainingTime);
+            });
+        };
+
+        // Start checking when component mounts
+        if (document.readyState === 'complete') {
+            checkAllLoaded();
+        } else {
+            window.addEventListener('load', checkAllLoaded);
+            return () => window.removeEventListener('load', checkAllLoaded);
+        }
+    }, []);
+
+    const handleLoadingComplete = () => {
+        setIsLoading(false);
+    };
 
     // Close popup when clicking outside
     useEffect(() => {
@@ -45,6 +91,11 @@ const ExamplePage = () => {
         document.body.removeChild(link);
         setShowResumePopup(false);
     };
+
+    // Show loading screen
+    if (isLoading) {
+        return <LoadingScreen onComplete={handleLoadingComplete} />;
+    }
 
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
