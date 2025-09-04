@@ -182,7 +182,7 @@ const ExamplePage = () => {
             {/* Wave Background - only for hero section */}
             <Waves
                 className="absolute z-0"
-                lineColor="rgba(0, 0, 0, 0.2)"
+                lineColor="rgba(255, 255, 255, 0.3)"
                 backgroundColor="rgba(16, 60, 101, 1)"
                 waveSpeedX={0.02}
                 waveSpeedY={0.01}
