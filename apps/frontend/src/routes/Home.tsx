@@ -229,7 +229,7 @@ const ExamplePage = () => {
                 lineColor="rgba(255, 255, 255, 0.3)"
                 backgroundColor="rgba(16, 60, 101, 1)"
                 waveSpeedX={0.02}
-                waveSpeedY={0.01}
+                waveSpeedY={0.02}
                 waveAmpX={40}
                 waveAmpY={20}
                 friction={0.9}
