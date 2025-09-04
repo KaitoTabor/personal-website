@@ -198,11 +198,11 @@ const AboutSection = () => {
                         skipSnaps: false,
                         dragFree: false,
                     }}
-                    className="w-full top-[55vh] md:top-[17vw] "
+                    className="w-[250%] md:w-[102%] top-[55vh] md:top-[17vw]  -translate-x-[29%] md:-translate-x-[0%]"
                 >
                     <CarouselContent>
                         {images.map((image, index) => (
-                            <CarouselItem key={index} className=" pl-[20vh] md:pl-0 basis-1/5 md:basis-1/5 ">
+                            <CarouselItem key={index} className="md:pl-0 basis-1/5 md:basis-1/5 ">
                                 <div className="relative group  h-[50vw] md:h-[17vw] ">
                                     <div className="aspect-[3/4] rounded-lg h-full overflow-hidden">
                                         <img 
@@ -215,7 +215,7 @@ const AboutSection = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <div className="absolute left-0 top-0 md:w-[10vw] h-full pointer-events-none z-10">
+                    <div className="absolute  w-[10vh] left-[31vh] md:left-0 top-0  md:w-[10vw] h-full pointer-events-none z-10">
                         <div 
                             className="w-full h-full backdrop-blur-md"
                             style={{
@@ -225,7 +225,7 @@ const AboutSection = () => {
                         />
                     </div>
 
-                     <div className="absolute right-0 top-0 md:w-[10vw] rounded-lg h-full pointer-events-none z-10">
+                     <div className="absolute w-[10vh] right-[33vh]  md:right-0 top-0 md:w-[10vw] rounded-lg h-full pointer-events-none z-10">
                         <div 
                             className="w-full h-full backdrop-blur-md"
                             style={{

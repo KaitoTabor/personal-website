@@ -20,7 +20,7 @@ const ExamplePage = () => {
     // Loading logic
     useEffect(() => {
         const startTime = Date.now();
-        const minLoadTime = 2000; // 2 seconds minimum
+        const minLoadTime = 3000; // 2 seconds minimum
 
         const checkAllLoaded = async () => {
             try {
