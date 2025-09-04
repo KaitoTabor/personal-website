@@ -235,7 +235,7 @@ const ExamplePage = () => {
                                 
                                 {/* Content area covering full viewport */}
                                 <div 
-                                    className="w-full h-full overflow-visible"
+                                    className="w-full h-full overflow-hidden"
                                     style={{
                                         backgroundImage: "url('/Hero-image-ocean.jpg')",
                                         backgroundSize: 'cover',

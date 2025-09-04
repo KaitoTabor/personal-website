@@ -101,7 +101,7 @@ const AboutSection = () => {
         <div className="flex justify-center w-full overflow-visible z-10">
             <div className="relative items-center w-full overflow-visible">
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
-                    <Card className="rounded-none absolute left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-gradient-to-b from-[rgba(35,37,41,0.9)] to-[rgba(35,37,41,0.95)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
+                    <Card className="rounded-none absolute left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
                             <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[15vw] md:h-[10vw] border-white z-10"
                                  style={{
@@ -198,7 +198,7 @@ const AboutSection = () => {
                         skipSnaps: false,
                         dragFree: false,
                     }}
-                    className="w-[250%] md:w-[102%] top-[55vh] md:top-[17vw]  -translate-x-[29%] md:-translate-x-[0%]"
+                    className="w-[250%] md:w-[103%] top-[55vh] md:top-[17vw]  -translate-x-[29%] md:-translate-x-[0%]"
                 >
                     <CarouselContent>
                         {images.map((image, index) => (

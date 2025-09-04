@@ -25,11 +25,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           
           <div className="loading-text">
             <h1>Loading</h1>
-            <div className="dots">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
-            </div>
           </div>
           
           <div className="progress-container">
@@ -39,7 +34,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           </div>
         </div>
       </div>
-
       <style>{`
         .loading-screen {
           position: fixed;
@@ -47,7 +41,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           left: 0;
           width: 100vw;
           height: 100vh;
-          background: linear-gradient(135deg, #001f3f 0%, #003366 25%, #004080 50%, #0066cc 75%, #ffffff 100%);
+          background: linear-gradient(135deg, #001f3f 0%,  rgba(7, 39, 68, 1) 25%, rgba(16, 60, 101, 1) 50%,  rgba(49, 89, 125, 1) 75%, #ffffff 100%);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -102,7 +96,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           }
         }
 
-        /* Loading content */
         .loading-content {
           position: relative;
           z-index: 10;
@@ -110,10 +103,9 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           color: white;
         }
 
-        /* Floating bubbles */
         .bubble-container {
           position: absolute;
-          top: -200px;
+          top: 90px;
           left: 50%;
           transform: translateX(-50%);
           width: 400px;
@@ -180,7 +172,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           }
         }
 
-        /* Loading text */
         .loading-text h1 {
           font-size: 2.5rem;
           font-weight: 300;
@@ -189,45 +180,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           letter-spacing: 3px;
         }
 
-        .dots {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-bottom: 40px;
-        }
-
-        .dot {
-          width: 8px;
-          height: 8px;
-          background: white;
-          border-radius: 50%;
-          animation: dot-pulse 1.5s ease-in-out infinite;
-        }
-
-        .dot:nth-child(1) {
-          animation-delay: 0s;
-        }
-
-        .dot:nth-child(2) {
-          animation-delay: 0.5s;
-        }
-
-        .dot:nth-child(3) {
-          animation-delay: 1s;
-        }
-
-        @keyframes dot-pulse {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scale(0.8);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.2);
-          }
-        }
-
-        /* Progress bar */
         .progress-container {
           width: 300px;
           margin: 0 auto;
@@ -235,6 +187,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
 
         .progress-bar {
           width: 100%;
+          position: relative;
+          top: -110px;
           height: 4px;
           background: rgba(255, 255, 255, 0.2);
           border-radius: 2px;
@@ -265,7 +219,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           }
         }
 
-        /* Responsive design */
         @media (max-width: 768px) {
           .loading-text h1 {
             font-size: 2rem;
