@@ -16,6 +16,36 @@ const ExamplePage = () => {
     const [activeTab, setActiveTab] = useState<TabType>(null);
     const [showResumePopup, setShowResumePopup] = useState(false);
     const resumePopupRef = useRef<HTMLDivElement>(null);
+    const resizeTimeoutRef = useRef<NodeJS.Timeout>();
+
+    // Disable animations during resize/zoom
+    useEffect(() => {
+        let resizeTimer: NodeJS.Timeout;
+        
+        const handleResize = () => {
+            // Add class to disable transitions
+            document.body.classList.add('no-transition-on-resize');
+            
+            // Clear existing timer
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+            
+            // Remove class after resize is complete
+            resizeTimer = setTimeout(() => {
+                document.body.classList.remove('no-transition-on-resize');
+            }, 100);
+        };
+
+        window.addEventListener('resize', handleResize);
+        
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+        };
+    }, []);
 
     // Loading logic
     useEffect(() => {
@@ -179,7 +209,21 @@ const ExamplePage = () => {
 
     return (
         <div className="relative min-h-screen w-full overflow-hidden">
-            {/* Wave Background - only for hero section */}
+            <style>{`
+                .no-transition-on-resize * {
+                    transition: none !important;
+                    animation-duration: 0s !important;
+                    animation-delay: 0s !important;
+                }
+                
+                @media (prefers-reduced-motion: reduce) {
+                    * {
+                        animation-duration: 0.01ms !important;
+                        animation-iteration-count: 1 !important;
+                        transition-duration: 0.01ms !important;
+                    }
+                }
+            `}</style>
             <Waves
                 className="absolute z-0"
                 lineColor="rgba(255, 255, 255, 0.3)"
