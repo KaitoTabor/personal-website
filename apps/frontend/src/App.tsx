@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import ExamplePage from './routes/Home.js';
-
 function App() {
     const router = createBrowserRouter([
         {
@@ -10,8 +9,6 @@ function App() {
             element: <ExamplePage />,
         },
     ]);
-
     return <RouterProvider router={router} />;
 }
-
 export default App;

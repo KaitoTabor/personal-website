@@ -1,7 +1,6 @@
 /*
-	Installed from https://reactbits.dev/ts/tailwind/
+	Installed from https:
 */
-
 import {
   useRef,
   useEffect,
@@ -11,7 +10,6 @@ import {
   FC,
   PointerEvent,
 } from "react";
-
 interface CurvedLoopProps {
   marqueeText?: string;
   speed?: number;
@@ -21,7 +19,6 @@ interface CurvedLoopProps {
   interactive?: boolean;
   yOffset?: number;
 }
-
 const CurvedLoop: FC<CurvedLoopProps> = ({
   marqueeText = "",
   speed = 2,
@@ -37,7 +34,6 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
       (hasTrailing ? marqueeText.replace(/\s+$/, "") : marqueeText) + "\u00A0"
     );
   }, [marqueeText]);
-
   const measureRef = useRef<SVGTextElement | null>(null);
   const textPathRef = useRef<SVGTextPathElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
@@ -47,12 +43,10 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const pathId = `curve-${uid}`;
   const baseY = 40 + yOffset;
   const pathD = `M-100,${baseY} Q500,${baseY + curveAmount} 1540,${baseY}`;
-
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
   const dirRef = useRef<"left" | "right">(direction);
   const velRef = useRef(0);
-
   const textLength = spacing;
   const totalText = textLength
     ? Array(Math.ceil(1800 / textLength) + 2)
@@ -60,12 +54,10 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
         .join("")
     : text;
   const ready = spacing > 0;
-
   useEffect(() => {
     if (measureRef.current)
       setSpacing(measureRef.current.getComputedTextLength());
   }, [text, className]);
-
   useEffect(() => {
     if (!spacing) return;
     if (textPathRef.current) {
@@ -74,7 +66,6 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
       setOffset(initial);
     }
   }, [spacing]);
-
   useEffect(() => {
     if (!spacing || !ready) return;
     let frame = 0;
@@ -96,7 +87,6 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     frame = requestAnimationFrame(step);
     return () => cancelAnimationFrame(frame);
   }, [spacing, speed, ready]);
-
   const onPointerDown = (e: PointerEvent) => {
     if (!interactive) return;
     dragRef.current = true;
@@ -104,7 +94,6 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     velRef.current = 0;
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
   };
-
   const onPointerMove = (e: PointerEvent) => {
     if (!interactive || !dragRef.current || !textPathRef.current) return;
     const dx = e.clientX - lastXRef.current;
@@ -120,19 +109,16 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     textPathRef.current.setAttribute("startOffset", newOffset + "px");
     setOffset(newOffset);
   };
-
   const endDrag = () => {
     if (!interactive) return;
     dragRef.current = false;
     dirRef.current = velRef.current > 0 ? "right" : "left";
   };
-
   const cursorStyle = interactive
     ? dragRef.current
       ? "grabbing"
       : "grab"
     : "auto";
-
   return (
     <div
       className="md:min-h-screen flex items-center justify-center w-full"
@@ -178,5 +164,4 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
     </div>
   );
 };
-
 export default CurvedLoop;

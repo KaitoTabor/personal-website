@@ -4,52 +4,40 @@ import { Card, CardContent } from "./ui/card";
 import CurvedLoop from "@/blocks/TextAnimations/CurvedLoop/CurvedLoop";
 import { Car, Instagram } from "lucide-react";
 import GlowButton from "./ui/GlowButton";
-
-
-// Custom hook to get responsive yOffset value
 const useResponsiveYOffset = () => {
-    const [yOffset, setYOffset] = useState(300); // default value
-
+    const [yOffset, setYOffset] = useState(300);
     useEffect(() => {
         const updateYOffset = () => {
             const width = window.innerWidth;
-            if (width >= 768) { // md breakpoint and above
-                setYOffset(300); // Different value for md+ screens
+            if (width >= 768) {
+                setYOffset(-400);
             } else {
-                setYOffset(700); // Default value for smaller screens
+                setYOffset(750);
             }
         };
-
-        updateYOffset(); // Set initial value
+        updateYOffset();
         window.addEventListener('resize', updateYOffset);
-        
         return () => window.removeEventListener('resize', updateYOffset);
     }, []);
-
     return yOffset;
 };
-
 const images = [
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+    '/me.jpg',
+    '/dog.jpg',
+    '/repo.jpg',
+    '/gunpla.jpg',
+    '/hxh.jpg',
+    '/chi_bread.jpg',
+    '/usagi.jpg',
+    '/tower.jpg',
+    '/cat.jpg',
 ]
-
 const AboutSection = () => {
     const [api, setApi] = useState<CarouselApi>()
     const timeoutRef = useRef<NodeJS.Timeout>()
-    const yOffset = useResponsiveYOffset(); // Use the responsive yOffset
-
+    const yOffset = useResponsiveYOffset();
     useEffect(() => {
         if (!api) return
-
         const startAutoplay = () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
@@ -59,34 +47,28 @@ const AboutSection = () => {
                 startAutoplay()
             }, 4000) 
         }
-
         startAutoplay()
-
         const handleUserInteraction = () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
             }
             timeoutRef.current = setTimeout(startAutoplay, 5000)
         }
-
         const handleMouseEnter = () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
             }
         }
-        
         const handleMouseLeave = () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
             }
             startAutoplay()
         }
-
         api.on('pointerDown', handleUserInteraction)
         const carouselElement = api.containerNode()
         carouselElement.addEventListener('mouseenter', handleMouseEnter)
         carouselElement.addEventListener('mouseleave', handleMouseLeave)
-
         return () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
@@ -96,14 +78,18 @@ const AboutSection = () => {
             carouselElement.removeEventListener('mouseleave', handleMouseLeave)
         }
     }, [api])
-
     return (
-        <div className="flex justify-center w-screen overflow-x-hidden">
-            <div className="relative items-center w-full max-w-[100vh] md:max-w-[100vw] overflow-x-hidden">
-                <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[5vw] ">
-                    <Card className="rounded-none relative overflow-hidden w-[90vw] h-[60vw] md:w-[60vw] md:h-[40vw] bg-white border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
+        <div className="flex justify-center w-full overflow-visible z-10">
+            <div className="relative items-center w-full overflow-visible">
+                <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
+                    <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[30vw] md:h-[20vw] bg-[rgb(9,24,99)] border-white z-10">
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[67.5vw] h-[45vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
+                                 style={{
+                                     backgroundImage: "url('/idea1.jpg')",
+                                     backgroundSize: "cover",
+                                     backgroundPosition: "center",
+                                 }}>
                             </div>
                             <div className="relative z-20 w-full h-full">
                                 <CurvedLoop 
@@ -112,77 +98,71 @@ const AboutSection = () => {
                                     curveAmount={-500}
                                     direction="right"
                                     interactive={true}
-                                    className="fill-black"
+                                    className="fill-white"
                                     yOffset={yOffset}
                                 />
                             </div>
-                            {/* <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[1vw] md:text-[1vw] md:max-w-[25vw] z-10">
+                            {/* <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[0.5vw] md:text-[0.5vw] md:max-w-[12.5vw] z-10">
                                 Japanese and American Bilingual Data Scientist and Developer from Palo Alto CA. Here to explore the world of Machine Learning and Deep Learning to create meaningful applications. カリフォルニア、パロアルト出身のバイリンガルデータサイエンティスト兼開発者。深層学習の世界を探求し、価値のあるプロダクトを作り出す為ここにいます。
                             </div> */}
-                            <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[1.7vw] md:top-[11vw] md:text-[8vw]  z-10">
-                                kaiTo
+                            <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
+                                Kaito
                             </div>
-                            <div className="absolute  font-kanji w-full flex justify-end right-[0.15vw] top-[16.5vw] text-[12vw] md:right-[0.1vw] md:top-[11vw] md:text-[8vw]  z-10">
+                            <div className="absolute  font-kanji w-full flex justify-end right-[2.36vw] top-[16.5vw] text-[12vw] md:right-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
                                 Tabor
                             </div>
-                            <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[44.8vw] md:text-[4vw]  z-10">
+                            <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[22.4vw] md:text-[2vw] text-white z-10">
                                 WPI-27
                             </div>
                         </CardContent>
                     </Card>
                 </div>
                 <div className="flex justify-center mb-[5vw]">
-                    <div className="relative shadow-0 overflow-hidden rounded-lg w-[80vw] h-[42vw] md:w-[54vw] md:h-[27vw] bg-[rgba(35,37,41,0.8)] border-[rgba(42,42,39,1)] border-3 z-10">
-                        <div className="absolute inset-0 flex items-center justify-start left-[2vw] md:left-[1vw] md:mt-[1vw]">
-                            <div className="text-white text-[1.7vw] w-[43vw] mt-[2vw] md:mt-[2vw] md:px-[3.6vw] md:text-[1vw]  md:w-[30vw] md:px-[3vw]">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse lectus augue, dapibus sed sem id, pulvinar consectetur sapien. Morbi nec diam suscipit, consequat turpis sed, fringilla mi. Morbi ac convallis metus. Nulla consequat lobortis pretium. Suspendisse placerat mauris quis massa fermentum, sed placerat mauris fringilla. Nulla tincidunt magna finibus tincidunt rutrum. Mauris varius auctor libero sed malesuada. Nunc venenatis leo mauris, eu rhoncus urna pharetra vitae. Integer vel efficitur lorem, eget eleifend lectus. Phasellus et erat non sapien ultrices venenatis. Cras sapien augue, congue sit amet sagittis ac, dignissim at odio. Aliquam eget risus ultrices, bibendum sem id, facilisis nunc.
+                    <div className="absolute shadow-0 overflow-hidden rounded-lg w-[88vw] h-[46.2vw] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
+                        <div className="absolute inset-0 flex items-center justify-start left-[2.2vw] md:left-[0.65vw]">
+                            <div className="text-gray-200 text-[2.3vw] w-[47.3vw] md:px-[2.34vw] md:text-[0.85vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems.
                             </div>
                         </div>
-                        <div className=" absolute text-white top-[2vw] left-[2vw] text-[3vw] w-[45vw] md:mt-[1vw] md:left-[1vw] md:px-[3.6vw] md:text-[2vw] md:w-[30vw] md:px-[3vw]">
+                        <div className="absolute text-white top-[2.2vw] left-[2.2vw] text-[3.3vw] w-[49.5vw] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">
                             About me
                         </div>
                         <GlowButton 
-                            className="absolute left-[49vw] top-[4vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[3vw] md:h-[5vw] md:w-[15vw] md:text-[10vw]"
+                            className="absolute left-[53.9vw] top-[4.4vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#0077b5"
                             href="https://www.linkedin.com/in/your-profile"
                             icon="devicon-linkedin-plain"
                             text="LinkedIn"
-                            iconSize="text-[5vw] md:text-[5vw]"
-                            textSize="text-[3vw] md:text-[2vw]"
+                            iconSize="text-[5.5vw] md:text-[3.25vw]"
+                            textSize="text-[3.3vw] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[49vw] top-[9vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[5vw] md:h-[5vw] md:w-[15vw]"
+                            className="absolute left-[53.9vw] top-[9.9vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#6e5494"
                             href="https://github.com/your-username"
                             icon="devicon-github-original"
                             text="GitHub"
-                            iconSize="text-[5vw] md:text-[5vw]"
-                            textSize="text-[3vw] md:text-[2vw]"
+                            iconSize="text-[5.5vw] md:text-[3.25vw]"
+                            textSize="text-[3.3vw] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[49vw] top-[15vw] h-[8vw] w-[24vw] md:left-[32vw] md:top-[7vw] md:h-[5vw] md:w-[15vw]"
+                            className="absolute left-[53.9vw] top-[16.5vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#E4405F"
                             href="https://www.instagram.com/your-username"
-                            icon={<Instagram className="w-[5vw] h-[5vw]" />}
+                            icon={<Instagram className="w-[5.5vw] h-[5.5vw] md:w-[3.25vw] md:h-[3.25vw]" />}
                             text="Instagram"
-                            textSize="text-[3vw] md:text-[2vw]"
+                            textSize="text-[3.3vw] md:text-[1.3vw]"
                         />
                     </div>
                 </div>
-
-                
-                <div className="text-white flex flex-col items-center justify-center">
+                {/* <div className="text-white flex flex-col items-center justify-center">
                     <div className="text-[4vw] md:text-[2vw] font-kanji mb-[0vw]">
                         Pics
                     </div>
                     <div className="text-[1.5vw]">
                         Some pictures of me,my interests, and random stuff
-
                     </div>
-
-                    
-                </div>
-
+                </div> */}
                 <Carousel
                     setApi={setApi}
                     opts={{
@@ -192,12 +172,12 @@ const AboutSection = () => {
                         skipSnaps: false,
                         dragFree: false,
                     }}
-                    className="w-full"
+                    className="w-[250%] md:w-[103%] top-[55vh] md:top-[17vw]  -translate-x-[29%] md:-translate-x-[0%]"
                 >
                     <CarouselContent>
                         {images.map((image, index) => (
-                            <CarouselItem key={index} className=" pl-[20vh] md:pl-0 basis-1/5 md:basis-1/5 ">
-                                <div className="relative group  h-[50vw] md:h-[25vw] ">
+                            <CarouselItem key={index} className="md:pl-0 basis-1/5 md:basis-1/5 ">
+                                <div className="relative group  h-[50vw] md:h-[17vw] ">
                                     <div className="aspect-[3/4] rounded-lg h-full overflow-hidden">
                                         <img 
                                             src={image} 
@@ -209,7 +189,7 @@ const AboutSection = () => {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <div className="absolute left-0 top-0 md:w-[10vw] h-full pointer-events-none z-10">
+                    <div className="absolute  w-[10vh] left-[31vh] md:left-0 top-0  md:w-[10vw] h-full pointer-events-none z-10">
                         <div 
                             className="w-full h-full backdrop-blur-md"
                             style={{
@@ -218,8 +198,7 @@ const AboutSection = () => {
                             }}
                         />
                     </div>
-
-                     <div className="absolute right-0 top-0 md:w-[10vw] rounded-lg h-full pointer-events-none z-10">
+                     <div className="absolute w-[10vh] right-[33vh]  md:right-0 top-0 md:w-[10vw] rounded-lg h-full pointer-events-none z-10">
                         <div 
                             className="w-full h-full backdrop-blur-md"
                             style={{
@@ -233,5 +212,4 @@ const AboutSection = () => {
         </div>
     );
 }
-
 export default AboutSection;

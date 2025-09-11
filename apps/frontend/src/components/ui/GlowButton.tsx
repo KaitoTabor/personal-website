@@ -1,5 +1,4 @@
 import { ReactNode, useId } from 'react';
-
 interface GlowButtonProps {
     children?: ReactNode;
     className?: string;
@@ -11,7 +10,6 @@ interface GlowButtonProps {
     iconSize?: string; 
     textSize?: string;
 }
-
 const GlowButton = ({ 
     children, 
     className = "", 
@@ -25,17 +23,13 @@ const GlowButton = ({
 }: GlowButtonProps) => {
     const uniqueId = useId(); 
     const animationName = `glowPulse-${uniqueId.replace(/:/g, '-')}`; 
-
     const renderIcon = () => {
         if (!icon) return null;
-        
         if (typeof icon === 'string') {
             return <i className={`${icon} ${iconSize} text-white`}></i>;
         }
-        
         return <div className={`${iconSize} text-white`}>{icon}</div>;
     };
-
     const handleMouseEnter = (target: HTMLElement) => {
         target.style.animation = 'none';
         target.style.boxShadow = `
@@ -45,10 +39,8 @@ const GlowButton = ({
             0 0 60px ${glowColor}66,
             inset 0 0 30px ${glowColor}55
         `;
-        target.style.background = `rgba(42,42,39,0.95)`;
         target.style.transform = 'scale(1.02)';
     };
-
     const handleMouseLeave = (target: HTMLElement) => {
         target.style.animation = `${animationName} 3s ease-in-out infinite alternate`;
         target.style.boxShadow = `
@@ -58,10 +50,8 @@ const GlowButton = ({
             0 0 30px ${glowColor}22,
             inset 0 0 10px ${glowColor}11
         `;
-        target.style.background = `rgba(42,42,39,0.8)`;
         target.style.transform = 'scale(1)';
     };
-
     const buttonContent = (
         <div 
             className={`rounded-lg bg-[rgba(42,42,39,0.8)] cursor-pointer relative transition-all duration-[800ms] hover:bg-[rgba(42,42,39,0.9)] hover:scale-105 ${className}`}
@@ -78,23 +68,18 @@ const GlowButton = ({
             onClick={onClick}
         >
             {children || (
-                <>
+                <div className="flex items-center justify-center w-full h-full gap-[1vw] md:gap-[0.5vw]">
                     {icon && (
-                        <div className="absolute left-[1vw] top-1/2 transform -translate-y-1/2 flex items-center justify-center">
+                        <div className="flex items-center justify-center">
                             {renderIcon()}
                         </div>
                     )}
                     {text && (
-                        <div className={`flex items-center justify-center w-full h-full ${icon ? 'pl-[6vw]' : ''}`}>
-                            <span className={`${textSize} text-white text-center`}>{text}</span>
-                        </div>
+                        <span className={`${textSize} text-white text-center ${icon ? 'flex-1' : ''}`}>
+                            {text}
+                        </span>
                     )}
-                    {!text && icon && (
-                        <div className="flex items-center justify-center w-full h-full">
-                            {renderIcon()}
-                        </div>
-                    )}
-                </>
+                </div>
             )}
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -120,7 +105,6 @@ const GlowButton = ({
             }} />
         </div>
     );
-
     if (href) {
         return (
             <a 
@@ -140,7 +124,6 @@ const GlowButton = ({
             </a>
         );
     }
-
     return (
         <div
             onMouseEnter={(e) => handleMouseEnter(e.currentTarget)}
@@ -150,5 +133,4 @@ const GlowButton = ({
         </div>
     );
 };
-
 export default GlowButton;

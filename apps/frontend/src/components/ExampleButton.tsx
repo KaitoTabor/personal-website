@@ -1,14 +1,10 @@
 import React from 'react';
-
-// An interface that defines the props the component accepts
 interface ButtonProps {
     onClick: () => void;
     children: React.ReactNode;
     variant: 'primary' | 'secondary';
     disabled: boolean;
 }
-
-// ExampleButton component definition
 const ExampleButton = ({ onClick, children, variant, disabled }: ButtonProps) => {
     return (
         <button
@@ -20,6 +16,4 @@ const ExampleButton = ({ onClick, children, variant, disabled }: ButtonProps) =>
         </button>
     );
 };
-
-// Export the component so it can be used in other files
 export default ExampleButton;

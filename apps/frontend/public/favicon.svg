@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="oceanRadial" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#38BDF8"/>
+      <stop offset="30%" style="stop-color:#0EA5E9"/>
+      <stop offset="60%" style="stop-color:#0284C7"/>
+      <stop offset="100%" style="stop-color:#0369A1"/>
+    </radialGradient>
+    <linearGradient id="waveShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.8)"/>
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.4)"/>
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0.1)"/>
+    </linearGradient>
+    <linearGradient id="depthGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0.3)"/>
+      <stop offset="100%" style="stop-color:rgba(0,0,0,0.2)"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Ocean background with depth -->
+  <rect width="32" height="32" rx="6" fill="url(#oceanRadial)"/>
+  
+  <!-- Ocean depth layers -->
+  <rect width="32" height="32" rx="6" fill="url(#depthGradient)" opacity="0.6"/>
+  
+  <!-- Multiple wave layers for realism -->
+  <path d="M0 24 Q4 20 8 24 T16 24 T24 24 T32 24 V32 H0 Z" fill="rgba(255,255,255,0.15)"/>
+  <path d="M0 22 Q6 18 12 22 T24 22 T32 22 V32 H0 Z" fill="rgba(255,255,255,0.25)"/>
+  <path d="M0 20 Q8 16 16 20 T32 20 V32 H0 Z" fill="url(#waveShine)" opacity="0.7"/>
+  
+  <!-- Foam and bubbles effect -->
+  <circle cx="8" cy="14" r="1" fill="rgba(255,255,255,0.6)" opacity="0.8"/>
+  <circle cx="24" cy="12" r="0.8" fill="rgba(255,255,255,0.5)" opacity="0.7"/>
+  <circle cx="14" cy="10" r="0.6" fill="rgba(255,255,255,0.4)" opacity="0.6"/>
+  
+  <!-- Subtle highlight for dimension -->
+  <ellipse cx="16" cy="8" rx="12" ry="4" fill="rgba(255,255,255,0.15)" opacity="0.8"/>
+  
+  <!-- Optional: Kaito's initial -->
+  <text x="16" y="14" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white" opacity="0.9" style="text-shadow: 0 1px 2px rgba(0,0,0,0.3)">K</text>
+</svg>

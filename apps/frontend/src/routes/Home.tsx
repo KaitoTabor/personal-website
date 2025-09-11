@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import LoadingScreen from '@/components/LoadingScreen.js';
 import ExampleComponent from '../components/ExampleComponent.js';
 import {Card, CardContent} from "@/components/ui/card";
 import Waves from "@blocks/Backgrounds/Waves/Waves";
@@ -7,77 +8,386 @@ import AnimatedHoverDisclosure from "@/components/playpen/AnimatedHoverDisclosur
 import SkillsSection from '@/components/SkillSection.js';
 import AboutSection from '@/components/AboutSection.js';
 import ExperienceSection from '@/components/ExperienceSection.js';
-
-
-
-
+type TabType = 'about' | 'experience' | 'skills' | null;
 const ExamplePage = () => {
+    const [isLoading, setIsLoading] = useState(true);
+    const [activeTab, setActiveTab] = useState<TabType>(null);
+    const [showResumePopup, setShowResumePopup] = useState(false);
+    const resumePopupRef = useRef<HTMLDivElement>(null);
+    const resizeTimeoutRef = useRef<NodeJS.Timeout>();
+    useEffect(() => {
+        let resizeTimer: NodeJS.Timeout;
+        const handleResize = () => {
+            document.body.classList.add('no-transition-on-resize');
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+            resizeTimer = setTimeout(() => {
+                document.body.classList.remove('no-transition-on-resize');
+            }, 100);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            if (resizeTimer) {
+                clearTimeout(resizeTimer);
+            }
+        };
+    }, []);
+    useEffect(() => {
+        const startTime = Date.now();
+        const minLoadTime = 3000;
+        const checkAllLoaded = async () => {
+            try {
+                const loadingPromises: Promise<void>[] = [];
+                if (document.readyState !== 'complete') {
+                    await new Promise(resolve => {
+                        const handler = () => {
+                            if (document.readyState === 'complete') {
+                                document.removeEventListener('readystatechange', handler);
+                                resolve(void 0);
+                            }
+                        };
+                        document.addEventListener('readystatechange', handler);
+                    });
+                }
+                const images = document.querySelectorAll('img');
+                images.forEach(img => {
+                    if (!img.complete || img.naturalHeight === 0) {
+                        loadingPromises.push(new Promise(resolve => {
+                            const handleLoad = () => {
+                                img.removeEventListener('load', handleLoad);
+                                img.removeEventListener('error', handleLoad);
+                                resolve();
+                            };
+                            img.addEventListener('load', handleLoad);
+                            img.addEventListener('error', handleLoad);
+                        }));
+                    }
+                });
+                const criticalImages = [
+                    '/Hero-image-ocean.jpg',
+                    '/favicon.svg'
+                ];
+                criticalImages.forEach(src => {
+                    loadingPromises.push(new Promise(resolve => {
+                        const img = new Image();
+                        img.onload = () => resolve();
+                        img.onerror = () => resolve();
+                        img.src = src;
+                    }));
+                });
+                if (document.fonts) {
+                    loadingPromises.push(
+                        document.fonts.ready.then(() => void 0)
+                    );
+                    const kanjiFont = new FontFace('kanji', "url('/fonts/SoukouMincho.ttf') format('truetype')");
+                    try {
+                        const loadedFont = await kanjiFont.load();
+                        document.fonts.add(loadedFont);
+                    } catch (error) {
+                        console.warn('Failed to load kanji font:', error);
+                    }
+                }
+                const styleSheets = Array.from(document.styleSheets);
+                styleSheets.forEach(sheet => {
+                    if (sheet.href && !sheet.disabled) {
+                        loadingPromises.push(new Promise(resolve => {
+                            if (sheet.cssRules || sheet.rules) {
+                                resolve();
+                            } else {
+                                const testLink = document.createElement('link');
+                                testLink.rel = 'stylesheet';
+                                testLink.href = sheet.href!;
+                                testLink.onload = () => resolve();
+                                testLink.onerror = () => resolve();
+                            }
+                        }));
+                    }
+                });
+                loadingPromises.push(new Promise(resolve => setTimeout(resolve, 500)));
+                await Promise.all(loadingPromises);
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+                if (remainingTime > 0) {
+                    await new Promise(resolve => setTimeout(resolve, remainingTime));
+                }
+                setIsLoading(false);
+            } catch (error) {
+                console.warn('Error during resource loading:', error);
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minLoadTime - elapsedTime);
+                setTimeout(() => setIsLoading(false), remainingTime);
+            }
+        };
+        checkAllLoaded();
+    }, []);
+    const handleLoadingComplete = () => {
+        setIsLoading(false);
+    };
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (resumePopupRef.current && !resumePopupRef.current.contains(event.target as Node)) {
+                setShowResumePopup(false);
+            }
+        };
+        if (showResumePopup) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showResumePopup]);
+    const handleTabClick = (tab: TabType) => {
+        setActiveTab(activeTab === tab ? null : tab);
+    };
+    const handleResumeDownload = (format: 'pdf' | 'docx') => {
+        const link = document.createElement('a');
+        link.href = '/Kaito_Tabor_Resume.pdf';
+        link.download = 'Kaito_Tabor_Resume.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setShowResumePopup(false);
+    };
+    if (isLoading) {
+        return <LoadingScreen onComplete={handleLoadingComplete} />;
+    }
     return (
-            <div className="relative min-h-screen w-full overflow-x-hidden">
-                <Waves
-                    className="absolute z-9"
-                    lineColor="rgba(0, 0, 0, 0.2)"
-                    backgroundColor="rgba(16, 60, 101, 1)"
-                    waveSpeedX={0.02}
-                    waveSpeedY={0.01}
-                    waveAmpX={40}
-                    waveAmpY={20}
-                    friction={0.9}
-                    tension={0.01}
-                    maxCursorMove={0}
-                    xGap={12}
-                    yGap={36}
-                    style={{ pointerEvents: "none" }}>
-                </Waves>
-                <HeroSection></HeroSection>
-                <div className="absolute w-full z-11 h-[6vh] md:h-[6vw] bg-gradient-to-t from-[rgba(35,37,41,0.6)] to-transparent"></div>
-                {/* <div className="absolute w-full overflow-hidden h-[10vh] md:h-[6vw] bg-[radial-gradient(circle_at_50%_300%,rgba(35,37,41,0.6),rgba(35,37,41,0))]"></div> */}
-                {/* <div className="absolute w-1/8 h-[6vh] md:h-[6vw] bg-[rgba(35,37,41,1)] "></div> */}
-                <div className="flex items-center z-11 justify-center relative mt-[6vh] md:mt-[6vw] ">
-                    <div className="bg-gradient-to-b from-[rgba(35,37,41,0.6)] to-[rgba(35,37,41,0.9)] w-full">
-                        <div className='flex items-center justify-center font-kanji text-white mb-[2vh] md:mb-[2vw] text-[4vh] md:text-[4vw]'>
-                            Contents
+        <div className="relative min-h-screen w-full overflow-hidden">
+            <style>{`
+                .no-transition-on-resize * {
+                    transition: none !important;
+                    animation-duration: 0s !important;
+                    animation-delay: 0s !important;
+                }
+                @media (prefers-reduced-motion: reduce) {
+                    * {
+                        animation-duration: 0.01ms !important;
+                        animation-iteration-count: 1 !important;
+                        transition-duration: 0.01ms !important;
+                    }
+                }
+            `}</style>
+            <Waves
+                className="absolute z-0"
+                lineColor="rgba(255, 255, 255, 0.3)"
+                backgroundColor="rgba(16, 60, 101, 1)"
+                waveSpeedX={0.02}
+                waveSpeedY={0.02}
+                waveAmpX={40    }
+                waveAmpY={20}
+                friction={0.9}
+                tension={0.01}
+                maxCursorMove={0}
+                xGap={12}
+                yGap={36}
+                style={{ pointerEvents: "none" }}>
+            </Waves>
+            <div className="flex h-screen relative z-10 items-center justify-center">
+                <div className="relative flex items-center -translate-x-[0.85vh] md:-translate-x-[2vw]">
+                    <div className="relative">
+                        <div className={`transition-all duration-1000 overflow-hidden ${
+                            activeTab ? 'opacity-100 pointer-events-none' : 'opacity-100 pointer-events-auto'
+                        }`}>
+                            <div className={`transition-transform duration-1000 ${
+                                activeTab ? 'translate-x-full' : 'translate-x-0'
+                            }`}>
+                                <HeroSection />
+                            </div>
                         </div>
-                        <AnimatedHoverDisclosure></AnimatedHoverDisclosure>
-                        <div className='flex flex-col items-center justify-center mt-[2vh] md:mt-[2vw]'>
-                            <div className='font-kanji text-white text-[4vh] md:text-[4vw]'>
-                                About
-                            </div>
-                            <div className='flex justify-center  md:-mt-[3vw]'>
-                                <AboutSection />
-                            </div>
-
-                        </div>
-
-
-                        <div className="flex flex-col items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji justify-center text-[4vh] md:text-[4vw]  text-white">
-                                Skills
-                            </div>
-                            <div className=" relative flex justify-center items-center p-[1vh] md:p-[1vw] md:py-[1vw] md:px-[1vw] w-7/8 mt-[2vh] md:mt-[2vw]">
-                                <div className=" absolute inset-0 justify-center -z-1 bg-[rgba(175,226,249,0.6)] rounded-lg  "></div>
-                                <div className="flex justify-center w-full">
-                                    <SkillsSection />
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
+                            activeTab === 'about' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                        }`}>
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
+                                activeTab === 'about' ? 'translate-x-0' : 'translate-x-full'
+                            }`}>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">About</h2>
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <div 
+                                    className="w-full h-full overflow-hidden"
+                                    style={{
+                                        backgroundImage: "url('/Hero-image-ocean.jpg')",
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundColor: 'rgba(35,37,41,0.7)'
+                                    }}
+                                >
+                                    <AboutSection />
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
-                                Experiences
-                            </div>
-                            <div>
-                                <ExperienceSection />
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
+                            activeTab === 'experience' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                        }`}>
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
+                                activeTab === 'experience' ? 'translate-x-0' : 'translate-x-full'
+                            }`}>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">Experience</h2>
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <div 
+                                    className="w-full h-full overflow-visible"
+                                    style={{
+                                        backgroundImage: "url('/Hero-image-ocean.jpg')",
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundColor: 'rgba(35,37,41,0.7)'
+                                    }}
+                                >
+                                    <ExperienceSection />
+                                </div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center relative mt-[2vh] md:mt-[2vw]">
-                            <div className="font-kanji text-[4vh] md:text-[4vw] text-white">
-                                Projects
+                        <div className={`absolute top-[2vh] left-[2vh] md:top-[5vw] md:left-[5vw] w-[42.75vh] h-[86vh] md:w-[66.75vw] md:h-[44.5vw] overflow-hidden transition-all duration-1000 ${
+                            activeTab === 'skills' ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+                        }`}>
+                            <div className={`w-full h-full relative transition-transform duration-1000 ${
+                                activeTab === 'skills' ? 'translate-x-0' : 'translate-x-full'
+                            }`}>
+                                <h2 className="absolute top-[1vh] left-[1vh] md:top-[0.5vw] md:left-[1vw] font-kanji text-white text-[3vh] md:text-[3vw] z-30">Skills & Projects</h2>
+                                <button
+                                    onClick={() => setActiveTab(null)}
+                                    className="absolute top-[1vh] right-[1vh] md:top-[1vw] md:right-[1vw] text-white hover:text-gray-300 transition-colors p-[0.5vh] md:p-[0.5vw] z-30"
+                                >
+                                    <svg className="w-[1.25vh] h-[1.25vh] md:w-[2vw] md:h-[2vw]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                                <div 
+                                    className="w-full h-full overflow-visible space-y-[2vh] md:space-y-[2vw] pt-[4vh] md:pt-[4vw] px-[1vh] md:px-[1vw]"
+                                    style={{
+                                        backgroundImage: "url('/Hero-image-ocean.jpg')",
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                        backgroundColor: 'rgba(35,37,41,0.7)'
+                                    }}
+                                >
+                                    <div>
+                                        <SkillsSection />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className="flex flex-col w-[2vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[86vh] md:h-[44.5vw] self-center">
+                        <button
+                            onClick={() => handleTabClick('about')}
+                            className={`flex-1 flex items-center justify-center border-b border-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:border-blue-300 hover:shadow-lg transform hover:[&_span]:text-blue-600 ${
+                                activeTab === 'about' ? 'bg-blue-50 border-blue-200' : ''
+                            }`}
+                        >
+                            <div className="transform -rotate-90 whitespace-nowrap">
+                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">About</span>
+                            </div>
+                        </button>
+                        <button
+                            onClick={() => handleTabClick('experience')}
+                            className={`flex-1 flex items-center justify-center border-b border-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 hover:border-green-300 hover:shadow-lg transform hover:[&_span]:text-green-600 ${
+                                activeTab === 'experience' ? 'bg-blue-50 border-blue-200' : ''
+                            }`}
+                        >
+                            <div className="transform -rotate-90 whitespace-nowrap">
+                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">Experience</span>
+                            </div>
+                        </button>
+                        <button
+                            onClick={() => handleTabClick('skills')}
+                            className={`flex-1 flex items-center justify-center transition-all duration-300 hover:bg-gradient-to-r hover:from-purple-50 hover:to-violet-50 hover:border-purple-300 hover:shadow-lg transform hover:[&_span]:text-purple-600 ${
+                                activeTab === 'skills' ? 'bg-blue-50 border-blue-200' : ''
+                            }`}
+                        >
+                            <div className="transform -rotate-90 whitespace-nowrap">
+                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">Skills</span>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
+            <div className="fixed bottom-[2vh] right-[2vh] md:bottom-[2vw] md:right-[2vw] z-20 flex flex-row md:flex-col gap-[1vh] md:gap-[1vw]">
+                <div className="relative" ref={resumePopupRef}>
+                    <button
+                        onClick={() => setShowResumePopup(!showResumePopup)}
+                        className="group backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 p-[1vh] md:p-[1vw] rounded-full transition-all duration-300 transform hover:scale-110"
+                        title="Resume"
+                        style={{
+                            backgroundImage: "url('/Hero-image-ocean.jpg')",
+                            backgroundSize: '150%',
+                            backgroundPosition: 'top left'
+                        }}
+                    >
+                        <svg className="w-[2.5vh] h-[2.5vh] md:w-[2.5vw] md:h-[2.5vw] text-white group-hover:text-cyan-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                        </svg>
+                    </button>
+                    {showResumePopup && (
+                        <div 
+                            className="absolute bottom-full left-1/2 transform -translate-x-1/2 md:bottom-full md:right-0 md:left-auto md:transform-none mb-[0.5vh] md:mb-[0.5vw] backdrop-blur-md bg-white/10 border border-white/20 rounded-lg shadow-lg p-[0.5vh] md:p-[0.3vw] min-w-[8vh] md:min-w-[5vw]"
+                            style={{
+                                backgroundImage: "url('/Hero-image-ocean.jpg')",
+                                backgroundSize: '120%',
+                                backgroundPosition: 'center top'
+                            }}
+                        >
+                            <div className="flex flex-col gap-[0.25vh] md:gap-[0.15vw]">
+                                <button
+                                    onClick={() => handleResumeDownload('pdf')}
+                                    className="px-[1vh] py-[0.5vh] md:px-[0.6vw] md:py-[0.3vw] text-[1.5vh] md:text-[1.2vw] text-white hover:bg-white/20 hover:text-cyan-300 rounded transition-all duration-200 text-left backdrop-blur-sm"
+                                >
+                                    Download PDF
+                                </button>
+                            </div>
+                            <div className="absolute top-full left-1/2 transform -translate-x-1/2 md:left-auto md:right-[1.25vw] md:transform-none w-0 h-0 border-l-[0.5vh] md:border-l-[0.5vw] border-l-transparent border-r-[0.5vh] md:border-r-[0.5vw] border-r-transparent border-t-[0.5vh] md:border-t-[0.5vw] border-t-white/20"></div>
+                        </div>
+                    )}
+                </div>
+                <a
+                    href="https://github.com/KaitoTabor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 p-[1vh] md:p-[1vw] rounded-full transition-all duration-300 transform hover:scale-110"
+                    title="GitHub"
+                    style={{
+                        backgroundImage: "url('/Hero-image-ocean.jpg')",
+                        backgroundSize: '130%',
+                        backgroundPosition: 'center center'
+                    }}
+                >
+                    <svg className="w-[2.5vh] h-[2.5vh] md:w-[2.5vw] md:h-[2.5vw] text-white group-hover:text-cyan-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                    </svg>
+                </a>
+                <a
+                    href="https://linkedin.com/in/kaito-tabor"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 p-[1vh] md:p-[1vw] rounded-full transition-all duration-300 transform hover:scale-110"
+                    title="LinkedIn"
+                    style={{
+                        backgroundImage: "url('/Hero-image-ocean.jpg')",
+                        backgroundSize: '130%',
+                        backgroundPosition: 'bottom right'
+                    }}
+                >
+                    <svg className="w-[2.5vh] h-[2.5vh] md:w-[2.5vw] md:h-[2.5vw] text-white group-hover:text-cyan-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M18.5 18.5V13.2A3.26 3.26 0 0 0 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17A1.4 1.4 0 0 1 15.71 13.57V18.5H18.5M6.88 8.56A1.68 1.68 0 0 0 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19A1.69 1.69 0 0 0 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56M8.27 18.5V10.13H5.5V18.5H8.27Z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     );
 };
-
 export default ExamplePage;
