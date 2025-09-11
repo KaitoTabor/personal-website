@@ -143,8 +143,8 @@ const ExamplePage = () => {
     };
     const handleResumeDownload = (format: 'pdf' | 'docx') => {
         const link = document.createElement('a');
-        link.href = format === 'pdf' ? '/resume.pdf' : '/resume.docx';
-        link.download = `Kaito_Tabor_Resume.${format}`;
+        link.href = '/Kaito_Tabor_Resume.pdf';
+        link.download = 'Kaito_Tabor_Resume.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -347,13 +347,7 @@ const ExamplePage = () => {
                                     onClick={() => handleResumeDownload('pdf')}
                                     className="px-[1vh] py-[0.5vh] md:px-[0.6vw] md:py-[0.3vw] text-[1.5vh] md:text-[1.2vw] text-white hover:bg-white/20 hover:text-cyan-300 rounded transition-all duration-200 text-left backdrop-blur-sm"
                                 >
-                                    PDF
-                                </button>
-                                <button
-                                    onClick={() => handleResumeDownload('docx')}
-                                    className="px-[1vh] py-[0.5vh] md:px-[0.6vw] md:py-[0.3vw] text-[1.5vh] md:text-[1.2vw] text-white hover:bg-white/20 hover:text-cyan-300 rounded transition-all duration-200 text-left backdrop-blur-sm"
-                                >
-                                    DOCX
+                                    Download PDF
                                 </button>
                             </div>
                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 md:left-auto md:right-[1.25vw] md:transform-none w-0 h-0 border-l-[0.5vh] md:border-l-[0.5vw] border-l-transparent border-r-[0.5vh] md:border-r-[0.5vw] border-r-transparent border-t-[0.5vh] md:border-t-[0.5vw] border-t-white/20"></div>

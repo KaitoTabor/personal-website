@@ -5,68 +5,43 @@ const ExperienceSection = () => {
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const experiences = [
         {
-            title: "Senior Full Stack Developer",
-            company: "Innovation Labs",
-            period: "2023 - Present",
+            title: "Machine Learning Engineer",
+            company: "JESGO CO. Ltd",
+            period: "September 2025 - Present",
             location: "Remote",
-            description: "Leading development of scalable web applications using React, TypeScript, and Node.js. Architecting cloud-native solutions with AWS and implementing CI/CD pipelines.",
-            skills: ["React", "TypeScript", "Node.js", "AWS", "Docker"],
+            description: "Developing a white-hat AI agent that detects security vulnerabilities in web applications using Rule and ML-based threat recognition.",
+            skills: ["Python", "Machine Learning", "Security", "AI", "Threat Detection"],
             highlights: [
-                "Reduced application load time by 40%",
-                "Led team of 5 developers",
-                "Implemented microservices architecture"
+                "Building white-hat AI security agent",
+                "Implementing ML-based threat recognition",
+                "Rule-based vulnerability detection"
             ]
         },
         {
-            title: "Software Engineer",
-            company: "TechFlow Solutions",
-            period: "2022 - 2023",
-            location: "Boston, MA",
-            description: "Developed and maintained enterprise-level applications with focus on performance optimization and user experience. Collaborated with cross-functional teams to deliver high-quality software solutions.",
-            skills: ["JavaScript", "Python", "PostgreSQL", "Redis"],
+            title: "Software Engineering Intern",
+            company: "UNICS CO. LLC - Japan",
+            period: "September 2025 - Present",
+            location: "Remote",
+            description: "Building a real estate platform with a reactive UI that streamlines property search and automates steps in the documenting and brokerage process.",
+            skills: ["React", "TypeScript", "Real Estate Tech", "UI/UX", "Automation"],
             highlights: [
-                "Increased system efficiency by 35%",
-                "Mentored 3 junior developers",
-                "Designed RESTful API architecture"
+                "Reactive UI development",
+                "Property search optimization",
+                "Process automation for brokerage"
             ]
         },
         {
-            title: "Research Assistant",
-            company: "Worcester Polytechnic Institute",
-            period: "2021 - 2022",
-            location: "Worcester, MA",
-            description: "Conducted cutting-edge research in machine learning and artificial intelligence. Published findings in peer-reviewed conferences and collaborated with industry partners.",
-            skills: ["Python", "TensorFlow", "PyTorch", "Machine Learning"],
+            title: "Machine Learning Engineering Intern",
+            company: "JESGO CO. Ltd",
+            period: "June 2025 - August 2025",
+            location: "Roppongi, Tokyo",
+            description: "Built an ESG scoring agent that scrapes and analyzes various online company disclosures with an LLM pipeline, automating ESG scoring for investing and M&A risk assessment. Deployed AWS Lambda chatbot and designed backend APIs for employee survey platform.",
+            skills: ["Python", "AWS Lambda", "MongoDB", "LLM", "ESG Analysis"],
             highlights: [
-                "Published 2 research papers",
-                "Developed novel ML algorithms",
-                "Secured $50K research grant"
-            ]
-        },
-        {
-            title: "Research Assistant",
-            company: "Worcester Polytechnic Institute",
-            period: "2021 - 2022",
-            location: "Worcester, MA",
-            description: "Conducted cutting-edge research in machine learning and artificial intelligence. Published findings in peer-reviewed conferences and collaborated with industry partners.",
-            skills: ["Python", "TensorFlow", "PyTorch", "Machine Learning"],
-            highlights: [
-                "Published 2 research papers",
-                "Developed novel ML algorithms",
-                "Secured $50K research grant"
-            ]
-        },
-        {
-            title: "Research Assistant",
-            company: "Worcester Polytechnic Institute",
-            period: "2021 - 2022",
-            location: "Worcester, MA",
-            description: "Conducted cutting-edge research in machine learning and artificial intelligence. Published findings in peer-reviewed conferences and collaborated with industry partners.",
-            skills: ["Python", "TensorFlow", "PyTorch", "Machine Learning"],
-            highlights: [
-                "Published 2 research papers",
-                "Developed novel ML algorithms",
-                "Secured $50K research grant"
+                "Improved data handling reliability by 21%",
+                "Scaled pipeline to evaluate 900+ ESG criteria per company",
+                "Deployed AWS Lambda chatbot with Big Five personality integration",
+                "Built APIs for multi-enterprise survey platform with LLM sentiment analysis"
             ]
         }
     ];
@@ -80,7 +55,7 @@ const ExperienceSection = () => {
                 backgroundAttachment: 'fixed'
             }}
         >
-            <div className="relative max-w-[90%] mx-auto">
+            <div className="relative max-w-[90%] top-[5vh] md:top-0 mx-auto h-[100vh]">
                 <div className="absolute left-[2vh] md:left-[3vw] top-0 bottom-0 w-[0.2vh] md:w-[0.2vw] bg-gradient-to-b from-blue-400 via-cyan-400 to-teal-400 shadow-lg"></div>
                 {experiences.map((exp, index) => {
                     const dynamicPadding = 2 / experiences.length;
@@ -176,7 +151,7 @@ const ExperienceSection = () => {
                     <div className="absolute left-[1.4vh] md:left-[2.4vw] w-[1.2vh] h-[1.2vh] md:w-[1.2vw] md:h-[1.2vw] rounded-full bg-gradient-to-r from-teal-400 to-cyan-500 shadow-lg border-[0.2vh] md:border-[0.2vw] border-white/60"></div>
                     <div className="ml-[4vh] md:ml-[6vw] bg-gradient-to-r from-teal-500/20 to-cyan-500/20 backdrop-blur-md border border-cyan-400/30 rounded-lg px-[2vh] py-[1vh] md:px-[2vw] md:py-[1vw]">
                         <p className="text-cyan-300 font-kanji text-[1.6vh] md:text-[1.6vw] text-center">
-                            Ready for the next adventure ✨
+                            Ready for the next adventure 
                         </p>
                     </div>
                 </div>

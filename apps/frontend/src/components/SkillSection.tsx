@@ -4,62 +4,79 @@ const SkillsSection = () => {
     const [hoveredProject, setHoveredProject] = useState<number | null>(null);
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const skills = [
-        { name: "React", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "TypeScript", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
         { name: "Python", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Node.js", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "AWS", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Docker", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "PostgreSQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "MongoDB", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Git", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "TensorFlow", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "SQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Java", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "JavaScript", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "HTML", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "CSS", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "C#", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "C", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "R", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/r/r-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
         { name: "PyTorch", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "TensorFlow", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Scikit-Learn", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Pandas", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Langchain", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Asyncio", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Playwright", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "NumPy", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "OpenCV", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opencv/opencv-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "PostgreSQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "MySQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "MongoDB", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Oracle", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Flask", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
         { name: "Express", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "React", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Node.js", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "TypeScript", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Prisma ORM", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
         { name: "Tailwind", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Vite", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Prisma", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Kubernetes", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Redis", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "GraphQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Jest", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
-        { name: "Figma", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> }
+        { name: "AWS Lambda", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "AWS EC2", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "AWS RDS", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Docker", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Git", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Anaconda", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/anaconda/anaconda-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Markdown", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/markdown/markdown-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Jupyter Notebook", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> }
     ];
     const projects = [
         {
             title: "Personal Portfolio Website",
             skills: ["React", "TypeScript", "Tailwind"],
             additionalSkills: 2,
-            description: "Modern responsive portfolio featuring sidebar navigation, glass-morphism design, and smooth animations. Built with React and TypeScript for optimal performance.",
-            highlights: ["Glass-morphism UI", "Responsive Design", "Smooth Animations", "Modern Architecture"],
+            description: "Modern responsive portfolio featuring ocean-themed loading animations, glass-morphism design, and smooth transitions. Built with React and TypeScript for optimal performance and user experience.",
+            highlights: ["Ocean-themed Animations", "Glass-morphism UI", "Responsive Design", "Smooth Transitions", "Modern Architecture"],
             github: "https://github.com/KaitoTabor/personal-website",
-            demo: "https://kaitotabor.dev"
+            demo: "https://ktabor.dev"
         },
         {
-            title: "ML Data Analysis Platform",
-            skills: ["Python", "TensorFlow", "AWS"],
-            additionalSkills: 4,
-            description: "Scalable machine learning platform for data analysis and model deployment. Features automated pipelines and real-time predictions.",
-            highlights: ["ML Pipeline Automation", "Real-time Predictions", "Cloud Deployment", "Data Visualization"],
-             github: "https://github.com/KaitoTabor/ml-platform",
-            github: null
+            title: "Hospital Navigation & Service Request Web App",
+            skills: ["React", "TypeScript", "PostgreSQL"],
+            additionalSkills: 5,
+            description: "WARNING: The AWS instance has not been updated in some time so some API features may be broken.\nLed a 10-person team in building a cloud-based hospital navigation and service request web app for Brigham & Women's Hospital using Agile methods. Built with PERN stack featuring interactive pathfinding, map editor, and voice-activated UI.",
+            highlights: ["Team Leadership (10 people)", "Pathfinding & Interactive Maps", "Voice-Activated UI", "AWS EC2 + RDS Deployment", "Dockerized Architecture", "Hospital Workflow Optimization"],
+            github: "https://github.com/KaitoTabor/hospital-website",
+            demo: "https://d1c7tggz7ivl8h.cloudfront.net/login"
         },
         {
-            title: "E-commerce Backend API",
-            skills: ["Node.js", "PostgreSQL", "Docker"],
+            title: "ASL Spelling Detection API",
+            skills: ["Python", "Flask", "OpenCV"],
             additionalSkills: 3,
-            description: "RESTful API for e-commerce platform with authentication, payment processing, and inventory management. Dockerized for easy deployment.",
-            highlights: ["RESTful Architecture", "Payment Integration", "Inventory Management", "Docker Deployment"],
-            github: "https://github.com/KaitoTabor/ml-platform",
-            github: null
+            description: "Built a real-time ASL fingerspelling recognition system achieving 96% test accuracy and 98% validation accuracy. Integrated into the Brigham Hospital app to enable ASL-only search functionality for improved accessibility.",
+            highlights: ["96% Test Accuracy", "98% Validation Accuracy", "MediaPipe + MLP Pipeline", "Real-time Recognition", "Accessibility Integration", "Custom Data Collection Tool"],
+            github: "https://github.com/KaitoTabor/ASL-CV",
+            demo: null
         },
         {
-            title: "Real-time Chat Application",
-            skills: ["React", "Node.js", "MongoDB"],
+            title: "EASE - Gamified Planner App",
+            skills: ["React", "Python", "TensorFlow"],
             additionalSkills: 2,
-            description: "Real-time messaging application with file sharing, group chats, and emoji reactions. Features WebSocket communication for instant messaging.",
-            highlights: ["Real-time Messaging", "File Sharing", "Group Chats", "WebSocket Communication"],
-            github: "https://github.com/KaitoTabor/ml-platform",
+            description: "Collaborated in a 4-person team to build a gamified planner app that reduces teen stress through interactive task planning. Features a Deep Neural Network achieving 85% accuracy in predicting task difficulty and stress levels.",
+            highlights: ["Stress Reduction Focus", "Deep Neural Network", "85% Prediction Accuracy", "Gamified Interface", "Teen Mental Health", "Synthetic Data Training"],
+            github: "https://github.com/KaitoTabor/SASEHACK2024",
             demo: null
         },
     ];
@@ -104,11 +121,11 @@ const SkillsSection = () => {
                 }
             `}</style>
             <div className="flex-1 flex flex-col h-full">
-                <h3 className="font-bold text-white text-[2vh] md:text-[1.8vw] mb-[1vh]  md:mt-[6vw] md:mb-[0vw] text-center">
+                <h3 className="font-bold text-white text-[2vh] md:text-[1.8vw] mb-[0vh]  md:mt-[3vw] md:mb-[0.5vw] text-center">
                     Technical Skills
                 </h3>
-                <Card className="flex-1 backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 overflow-hidden">
-                    <CardContent className="p-[1vh] md:p-[1vw] h-full">
+                <Card className="flex-1 backdrop-blur-md pt-[1vh] pb-[1vh] bg-white/10 border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 overflow-hidden">
+                    <CardContent className="p-x-[1vh] pt-0 pb-0 md:p-[1vw] h-full">
                         <div className="flex flex-wrap gap-[0.5vh] md:gap-[0.5vw] h-full content-start">
                             {skills.map((skill, index) => (
                                 <div 
@@ -126,11 +143,11 @@ const SkillsSection = () => {
                 </Card>
             </div>
             <div className="flex-1 flex flex-col h-full ">
-                <h3 className="font-bold text-white text-[2vh] md:text-[1.8vw] mb-[1vh] md:mb-[0vw] text-center">
+                <h3 className="font-bold text-white text-[2vh] md:text-[1.8vw] mb-[0vh] md:mt-[3vw]  md:mb-[0.5vw] text-center">
                     Featured Projects
                 </h3>
-                <Card className="flex-1 backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 overflow-hidden">
-                    <CardContent className="p-[1vh] md:p-[1vw] h-full">
+                <Card className="flex-1 backdrop-blur-md pt-[1vh] pb-[1vh] bg-white/10 border border-white/20 shadow-lg hover:bg-white/15 transition-all duration-300 overflow-hidden">
+                    <CardContent className="p-[1vh] pt-0 pb-0 md:p-[1vw] h-full">
                         <div className="space-y-[0.5vh] md:space-y-[0.5vw] h-full overflow-visible">
                             {projects.map((project, index) => (
                                 <div
@@ -157,7 +174,7 @@ const SkillsSection = () => {
                                                     className="text-white/70 hover:text-cyan-300 transition-colors text-[1vh] md:text-[0.8vw]"
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
-                                                    ⚡
+                                                    🔗
                                                 </a>
                                             )}
                                             {project.demo && (
@@ -168,7 +185,7 @@ const SkillsSection = () => {
                                                     className="text-white/70 hover:text-cyan-300 transition-colors text-[1vh] md:text-[0.8vw]"
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
-                                                    🔗
+                                                    ⚡
                                                 </a>
                                             )}
                                         </div>
@@ -238,7 +255,7 @@ const SkillsSection = () => {
                             </div>
                             <div>
                                 <h4 className="text-cyan-300 font-semibold text-[1.5vh] md:text-[1.2vw] mb-[0.5vh] md:mb-[0.5vw]">Description:</h4>
-                                <p className="text-gray-200 text-[1.3vh] md:text-[1vw] leading-relaxed">
+                                <p className="text-gray-200 text-[1.3vh] md:text-[1vw] leading-relaxed whitespace-pre-line">
                                     {projects[selectedProject].description}
                                 </p>
                             </div>
@@ -261,7 +278,7 @@ const SkillsSection = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-[0.5vh] md:gap-[0.5vw] bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 px-[1vh] py-[0.5vh] md:px-[1vw] md:py-[0.5vw] rounded-md text-white hover:text-cyan-300 transition-all duration-300 text-[1.2vh] md:text-[0.9vw]"
                                     >
-                                        <span>⚡</span>
+                                        <span>🔗</span>
                                         GitHub
                                     </a>
                                 )}
@@ -272,7 +289,7 @@ const SkillsSection = () => {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-[0.5vh] md:gap-[0.5vw] bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 px-[1vh] py-[0.5vh] md:px-[1vw] md:py-[0.5vw] rounded-md text-white hover:text-cyan-300 transition-all duration-300 text-[1.2vh] md:text-[0.9vw]"
                                     >
-                                        <span>🔗</span>
+                                        <span>⚡</span>
                                         Live Demo
                                     </a>
                                 )}
