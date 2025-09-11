@@ -1,45 +1,33 @@
 import React, { useEffect, useRef, useState } from 'react';
-
 interface LoadingScreenProps {
     onComplete: () => void;
 }
-
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     const [isVisible, setIsVisible] = useState(true);
     const [progress, setProgress] = useState(0);
     const [fadeOut, setFadeOut] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
-        // Progress animation
         const startTime = Date.now();
         const duration = 2500;
-
         const animateProgress = () => {
             const elapsed = Date.now() - startTime;
             const newProgress = Math.min((elapsed / duration) * 100, 100);
             setProgress(newProgress);
-
             if (newProgress < 100) {
                 requestAnimationFrame(animateProgress);
             }
         };
-
         requestAnimationFrame(animateProgress);
-
-        // Exit after 3 seconds
         setTimeout(() => {
             setFadeOut(true);
             setTimeout(() => {
                 setIsVisible(false);
                 onComplete();
-            }, 600); // Wait for fade out animation
+            }, 600);
         }, 3000);
-
     }, [onComplete]);
-
     if (!isVisible) return null;
-
     return (
         <>
             <style>{`
@@ -56,7 +44,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         transform: scale(1) translateY(0);
                     }
                 }
-
                 @keyframes waveEntrance {
                     from {
                         opacity: 0;
@@ -67,7 +54,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         transform: translateY(0);
                     }
                 }
-
                 @keyframes textEntrance {
                     from {
                         opacity: 0;
@@ -78,7 +64,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         transform: translateY(0);
                     }
                 }
-
                 @keyframes wave {
                     0%, 100% {
                         transform: translateY(0);
@@ -87,27 +72,22 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         transform: translateY(-10px);
                     }
                 }
-
                 .logo-entrance {
                     animation: logoEntrance 1s ease-out forwards;
                     opacity: 0;
                 }
-
                 .wave-entrance {
                     animation: waveEntrance 0.8s ease-out 0.5s forwards;
                     opacity: 0;
                 }
-
                 .text-entrance {
                     animation: textEntrance 0.6s ease-out 1s forwards;
                     opacity: 0;
                 }
-
                 .wave-animation {
                     animation: wave 2s ease-in-out infinite alternate;
                 }
             `}</style>
-            
             <div 
                 ref={containerRef}
                 className={`fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-600 ${
@@ -125,7 +105,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         </span>
                     </div>
                 </div>
-
                 {/* Animated Waves */}
                 <div className="flex space-x-2 mb-8 wave-entrance">
                     {[...Array(5)].map((_, i) => (
@@ -138,7 +117,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         />
                     ))}
                 </div>
-
                 {/* Loading Text */}
                 <div className="text-center text-entrance">
                     <h2 className="text-2xl md:text-3xl font-light text-white mb-4 font-kanji">
@@ -147,7 +125,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                     <p className="text-white/70 text-sm md:text-base mb-6">
                         Preparing your experience...
                     </p>
-                    
                     {/* Progress Bar */}
                     <div className="w-64 h-1 bg-white/20 rounded-full overflow-hidden">
                         <div 
@@ -155,13 +132,11 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                             style={{ width: `${progress}%` }}
                         ></div>
                     </div>
-                    
                     {/* Progress Percentage */}
                     <div className="mt-2 text-white/60 text-sm">
                         {Math.round(progress)}%
                     </div>
                 </div>
-
                 {/* Floating Particles */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
                     {[...Array(15)].map((_, i) => (
@@ -181,5 +156,4 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </>
     );
 };
-
 export default LoadingScreen;

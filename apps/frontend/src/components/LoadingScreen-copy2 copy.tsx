@@ -1,40 +1,29 @@
 import React, { useEffect, useState } from 'react';
-
 interface LoadingScreenProps {
     onComplete: () => void;
 }
-
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);
     const [fadeOut, setFadeOut] = useState(false);
-
     useEffect(() => {
-        // Progress animation
         const startTime = Date.now();
-        const duration = 2500; // 2.5 seconds to complete progress
-
+        const duration = 2500;
         const animateProgress = () => {
             const elapsed = Date.now() - startTime;
             const newProgress = Math.min((elapsed / duration) * 100, 100);
             setProgress(newProgress);
-
             if (newProgress < 100) {
                 requestAnimationFrame(animateProgress);
             }
         };
-
         requestAnimationFrame(animateProgress);
-
-        // Exit after 3 seconds total
         setTimeout(() => {
             setFadeOut(true);
             setTimeout(() => {
                 onComplete();
-            }, 500); // Wait for fade out animation
+            }, 500);
         }, 3000);
-
     }, [onComplete]);
-
     return (
         <div 
             className={`fixed inset-0 z-50 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ${
@@ -47,7 +36,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                     KaiTo Tabor
                 </h1>
             </div>
-
             {/* Loading Bar Container */}
             <div className="w-80 md:w-96">
                 {/* Progress Bar Background */}
@@ -58,7 +46,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                         style={{ width: `${progress}%` }}
                     />
                 </div>
-                
                 {/* Progress Percentage */}
                 <div className="mt-4 text-center">
                     <span className="text-gray-400 text-sm font-mono">
@@ -66,7 +53,6 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
                     </span>
                 </div>
             </div>
-
             {/* Loading Text */}
             <div className="mt-8 text-center">
                 <p className="text-gray-500 text-sm uppercase tracking-widest">
@@ -76,5 +62,4 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         </div>
     );
 };
-
 export default LoadingScreen;

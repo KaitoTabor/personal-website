@@ -1,9 +1,7 @@
 /*
-	Installed from https://reactbits.dev/ts/tailwind/
+	Installed from https:
 */
-
 import React, { useRef, useEffect, CSSProperties } from "react";
-
 class Grad {
   x: number;
   y: number;
@@ -17,13 +15,11 @@ class Grad {
     return this.x * x + this.y * y;
   }
 }
-
 class Noise {
   grad3: Grad[];
   p: number[];
   perm: number[];
   gradP: Grad[];
-
   constructor(seed = 0) {
     this.grad3 = [
       new Grad(1, 1, 0),
@@ -97,13 +93,11 @@ class Noise {
     );
   }
 }
-
 interface Point {
   x: number;
   y: number;
   wave: { x: number; y: number };
 }
-
 interface Config {
   lineColor: string;
   waveSpeedX: number;
@@ -116,7 +110,6 @@ interface Config {
   xGap: number;
   yGap: number;
 }
-
 interface WavesProps {
   lineColor?: string;
   backgroundColor?: string;
@@ -132,7 +125,6 @@ interface WavesProps {
   style?: CSSProperties;
   className?: string;
 }
-
 const Waves: React.FC<WavesProps> = ({
   lineColor = "black",
   backgroundColor = "transparent",
@@ -164,7 +156,6 @@ const Waves: React.FC<WavesProps> = ({
   });
   const noiseRef = useRef(new Noise(Math.random()));
   const linesRef = useRef<Point[][]>([]);
-
   const configRef = useRef<Config>({
     lineColor,
     waveSpeedX,
@@ -177,9 +168,7 @@ const Waves: React.FC<WavesProps> = ({
     xGap,
     yGap,
   });
-
   const frameIdRef = useRef<number | null>(null);
-
   useEffect(() => {
     configRef.current = {
       lineColor,
@@ -205,13 +194,11 @@ const Waves: React.FC<WavesProps> = ({
     xGap,
     yGap,
   ]);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     const container = containerRef.current;
     if (!canvas || !container) return;
     ctxRef.current = canvas.getContext("2d");
-
     function setSize() {
       if (!container || !canvas) return;
       const rect = container.getBoundingClientRect();
@@ -224,7 +211,6 @@ const Waves: React.FC<WavesProps> = ({
       canvas.width = rect.width;
       canvas.height = rect.height;
     }
-
     function setLines() {
       const { width, height } = boundingRef.current;
       linesRef.current = [];
@@ -247,7 +233,6 @@ const Waves: React.FC<WavesProps> = ({
         linesRef.current.push(pts);
       }
     }
-
     function movePoints(time: number) {
       const lines = linesRef.current;
       const noise = noiseRef.current;
@@ -269,13 +254,11 @@ const Waves: React.FC<WavesProps> = ({
         });
       });
     }
-
     function moved(point: Point): { x: number; y: number } {
       const x = point.x + point.wave.x;
       const y = point.y + point.wave.y;
       return { x: Math.round(x * 10) / 10, y: Math.round(y * 10) / 10 };
     }
-
     function drawLines() {
       const { width, height } = boundingRef.current;
       const ctx = ctxRef.current;
@@ -296,26 +279,21 @@ const Waves: React.FC<WavesProps> = ({
       });
       ctx.stroke();
     }
-
     function tick(t: number) {
       const container = containerRef.current;
       if (!container) return;
-
       movePoints(t);
       drawLines();
       frameIdRef.current = requestAnimationFrame(tick);
     }
-
     function onResize() {
       setSize();
       setLines();
     }
-
     setSize();
     setLines();
     frameIdRef.current = requestAnimationFrame(tick);
     window.addEventListener("resize", onResize);
-
     return () => {
       window.removeEventListener("resize", onResize);
       if (frameIdRef.current !== null) {
@@ -323,7 +301,6 @@ const Waves: React.FC<WavesProps> = ({
       }
     };
   }, []);
-
   return (
     <div
       ref={containerRef}
@@ -337,5 +314,4 @@ const Waves: React.FC<WavesProps> = ({
     </div>
   );
 };
-
 export default Waves;

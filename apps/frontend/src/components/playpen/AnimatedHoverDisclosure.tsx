@@ -1,6 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-
-// Card data type
 type CardData = {
   image: string;
   title: string;
@@ -10,23 +8,20 @@ type CardData = {
   /** Optional per-card icon (ReactNode or raw SVG string) */
   icon?: React.ReactNode;
 };
-
 const icon = (
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M6 12h12M12 6v12" />
   </svg>
 );
-
 const defaultCards: CardData[] = [
-  { image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', title: 'Ocean', description: 'A beautiful view of the ocean at sunset.', link: '#', linkLabel: 'Learn more', icon },
-  { image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', title: 'Forest', description: 'A tranquil forest with tall trees.', link: '#', linkLabel: 'Explore', icon },
-  { image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80', title: 'Mountains', description: 'Snow-capped mountains under a clear sky.', link: '#', linkLabel: 'Discover', icon },
-  { image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80', title: 'Desert', description: 'Golden sands stretching to the horizon.', link: '#', linkLabel: 'See more', icon },
-  { image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80', title: 'City', description: 'A bustling city skyline at night.', link: '#', linkLabel: 'Visit', icon },
-  { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80', title: 'Waves', description: 'Dynamic ocean waves in motion.', link: '#', linkLabel: 'Dive in', icon },
-  { image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80', title: 'Aurora', description: 'The northern lights shine brightly.', link: '#', linkLabel: 'View', icon },
+  { image: 'https:
+  { image: 'https:
+  { image: 'https:
+  { image: 'https:
+  { image: 'https:
+  { image: 'https:
+  { image: 'https:
 ];
-
 let injected = false;
 const injectCSS = () => {
   if (typeof document === 'undefined' || injected) return;
@@ -46,8 +41,6 @@ const injectCSS = () => {
   .ahd-item[data-active='true'] article p, .ahd-item[data-active='true'] article a, .ahd-item[data-active='true'] article img { transition-delay:calc(var(--speed)*0.25); }
   .ahd-item[data-active='true'] article img { filter:grayscale(0) brightness(1); scale:1; }
   .ahd-item:focus-visible { outline:0.24vh solid canvasText; outline-offset:0.24vh; }
-
-
   @media (min-width:768px){
     .ahd-container { display:flex; justify-content:center; align-items:center; min-height:20vw; min-width:80vw }
     .ahd-list { --gap:0.56vw; --base:clamp(2.22vw,8cqi,5.56vw); height:clamp(20.83vw,40dvh,32.92vw); width:56.94vw; max-width:calc(100% - 4.44vw); }
@@ -64,25 +57,17 @@ const injectCSS = () => {
   document.head.appendChild(style);
   injected = true;
 };
-
 interface AnimatedHoverDisclosureProps { data?: CardData[]; className?: string; }
-
 export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = ({ data = defaultCards, className }) => {
   const listRef = useRef<HTMLUListElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  // Inject styles (client-only)
   useEffect(() => { injectCSS(); }, []);
-
-  // Update columns & active dataset
   useEffect(() => {
     const list = listRef.current; if (!list) return;
     const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'));
     items.forEach((li, i) => { li.dataset.active = (i === activeIndex).toString(); });
     list.style.gridTemplateColumns = items.map((_, i) => (i === activeIndex ? '10fr' : '1fr')).join(' ');
   }, [activeIndex, data.length]);
-
-  // Measure widest li for article width variable (after layout)
   const measure = () => {
     const list = listRef.current; if (!list) return;
     const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'));
@@ -95,8 +80,6 @@ export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = (
   };
   useEffect(() => { measure(); window.addEventListener('resize', measure); return () => window.removeEventListener('resize', measure); });
   useEffect(() => { measure(); }, [data.length]);
-
-  // Event helpers
   const activateFromEvent = (el: HTMLElement | null) => {
     if (!el || !listRef.current) return;
     const li = el.closest('li');
@@ -104,7 +87,6 @@ export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = (
     const idx = Array.from(listRef.current.children).indexOf(li);
     if (idx >= 0 && idx !== activeIndex) setActiveIndex(idx);
   };
-
   const handlePointerMove: React.PointerEventHandler<HTMLUListElement> = (e) => activateFromEvent(e.target as HTMLElement);
   const handleClick: React.MouseEventHandler<HTMLUListElement> = (e) => activateFromEvent(e.target as HTMLElement);
   const handleFocus: React.FocusEventHandler<HTMLUListElement> = (e) => activateFromEvent(e.target as HTMLElement);
@@ -112,7 +94,6 @@ export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = (
     if (e.key === 'ArrowRight') setActiveIndex(i => (i + 1) % data.length);
     else if (e.key === 'ArrowLeft') setActiveIndex(i => (i - 1 + data.length) % data.length);
   };
-
   return (
     <div className={`ahd-container ${className || ''}`.trim()}>
       <ul
@@ -143,5 +124,4 @@ export const AnimatedHoverDisclosure: React.FC<AnimatedHoverDisclosureProps> = (
     </div>
   );
 };
-
 export default AnimatedHoverDisclosure;

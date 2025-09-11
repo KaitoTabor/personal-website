@@ -1,5 +1,4 @@
 import {Card, CardContent} from "@/components/ui/card";
-
 const HeroSection = () => {
     return (
         <div className="flex items-center justify-center p-[2vh] pr-0 md:p-[5vw] md:pr-0 relative z-10">
@@ -37,13 +36,10 @@ const HeroSection = () => {
                 <div className="absolute top-[25vh] text-[4vh] font-kanji w-full flex justify-end right-[2vh] md:top-[25vw] text-white md:text-[4vw] md:right-[16vw]">
                     CS&DS
                 </div>
-
-
                 <CardContent className="relative z-10 p-6">
                 </CardContent>
             </Card>
         </div>
     )
 }
-
 export default HeroSection;
