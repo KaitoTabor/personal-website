@@ -8,9 +8,6 @@
     },
     "devDependencies": {
         "eslint": "*",
-        "eslint-config-custom": "workspace:*",
         "prettier": "*",
-        "prettier-config-custom": "workspace:*",
-        "ts-config-custom": "workspace:*"
     }
 }
