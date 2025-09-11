@@ -81,8 +81,8 @@ const ExperienceSection = () => {
                                 <CardContent 
                                     className="p-[0vh] md:px-[0.8vw]"
                                     style={{
-                                        paddingTop: `${dynamicPadding}vh md:${dynamicPadding}vw`,
-                                        paddingBottom: `${dynamicPadding}vh md:${dynamicPadding}vw`
+                                        paddingTop: `${dynamicPadding}vw`,
+                                        paddingBottom: `${dynamicPadding}vw`
                                     }}
                                 >
                                     <div className="flex flex-col md:flex-row md:justify-between md:items-start">

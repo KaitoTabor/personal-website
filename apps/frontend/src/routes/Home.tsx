@@ -283,7 +283,7 @@ const ExamplePage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col w-[2vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[86vh] md:h-[44.5vw] self-center">
+                    <div className="flex flex-col w-[3.5vh] md:w-[4vw] bg-white shadow-lg border-l border-gray-200 h-[86vh] md:h-[44.5vw] self-center">
                         <button
                             onClick={() => handleTabClick('about')}
                             className={`flex-1 flex items-center justify-center border-b border-gray-200 transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:border-blue-300 hover:shadow-lg transform hover:[&_span]:text-blue-600 ${
@@ -291,7 +291,7 @@ const ExamplePage = () => {
                             }`}
                         >
                             <div className="transform -rotate-90 whitespace-nowrap">
-                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">About</span>
+                                <span className="font-kanji text-gray-700 text-[2vh] md:text-[1.5vw] transition-colors duration-300">About</span>
                             </div>
                         </button>
                         <button
@@ -301,7 +301,7 @@ const ExamplePage = () => {
                             }`}
                         >
                             <div className="transform -rotate-90 whitespace-nowrap">
-                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">Experience</span>
+                                <span className="font-kanji text-gray-700 text-[2vh] md:text-[1.5vw] transition-colors duration-300">Experience</span>
                             </div>
                         </button>
                         <button
@@ -311,7 +311,7 @@ const ExamplePage = () => {
                             }`}
                         >
                             <div className="transform -rotate-90 whitespace-nowrap">
-                                <span className="font-kanji text-gray-700 text-[1.5vh] md:text-[1.5vw] transition-colors duration-300">Skills</span>
+                                <span className="font-kanji text-gray-700 text-[2vh] md:text-[1.5vw] transition-colors duration-300">Skills</span>
                             </div>
                         </button>
                     </div>
