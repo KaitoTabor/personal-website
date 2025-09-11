@@ -82,9 +82,9 @@ const AboutSection = () => {
         <div className="flex justify-center w-full overflow-visible z-10">
             <div className="relative items-center w-full overflow-visible">
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
-                    <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
+                    <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[41.4vw] h-[27.6vh] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[67.5vw] h-[45vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[31.05vw] h-[20.7vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
                                  style={{
                                      backgroundImage: "url('/idea1.jpg')",
                                      backgroundSize: "cover",
@@ -105,53 +105,53 @@ const AboutSection = () => {
                             {/* <div className="absolute  text-justify font-kanji w-full flex  top-[0vw]  left-[1.5vw] text-[0vw] max-w-[37.5vw] md:left-[0.5vw] md:text-[0.5vw] md:max-w-[12.5vw] z-10">
                                 Japanese and American Bilingual Data Scientist and Developer from Palo Alto CA. Here to explore the world of Machine Learning and Deep Learning to create meaningful applications. カリフォルニア、パロアルト出身のバイリンガルデータサイエンティスト兼開発者。深層学習の世界を探求し、価値のあるプロダクトを作り出す為ここにいます。
                             </div> */}
-                            <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
+                            <div className="absolute  font-kanji w-full flex justify-start left-[1.0856vh] top-[7.59vh] text-[5.52vh] md:left-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
                                 Kaito
                             </div>
-                            <div className="absolute  font-kanji w-full flex justify-end right-[2.36vw] top-[16.5vw] text-[12vw] md:right-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
+                            <div className="absolute  font-kanji w-full flex justify-end right-[1.0856vh] top-[7.59vh] text-[5.52vh] md:right-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
                                 Tabor
                             </div>
-                            <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[22.4vw] md:text-[2vw] text-white z-10">
+                            <div className="absolute  font-kanji w-full flex  top-[0vh]  left-[30.912vh] text-[2.76vh] md:left-[22.4vw] md:text-[2vw] text-white z-10">
                                 WPI-27
                             </div>
                         </CardContent>
                     </Card>
                 </div>
-                <div className="flex justify-center mb-[5vw]">
-                    <div className="absolute shadow-0 overflow-hidden rounded-lg w-[88vw] h-[46.2vw] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
-                        <div className="absolute inset-0 flex items-center justify-start left-[2.2vw] md:left-[0.65vw]">
-                            <div className="text-gray-200 text-[2.3vw] w-[47.3vw] md:px-[2.34vw] md:text-[0.85vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
+                <div className="flex justify-center mb-[2.3vh] md:mb-[5vw]">
+                    <div className="absolute shadow-0 overflow-hidden rounded-lg w-[40.48vh] h-[21.252vh] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
+                        <div className="absolute inset-0 flex items-center justify-start left-[1.012vh] md:left-[0.65vw]">
+                            <div className="text-gray-200 text-[1.058vh] w-[21.578vh] md:px-[2.34vw] md:text-[0.85vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems.
                             </div>
                         </div>
-                        <div className="absolute text-white top-[2.2vw] left-[2.2vw] text-[3.3vw] w-[49.5vw] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">
+                        <div className="absolute text-white top-[1.012vh] left-[1.408vh] text-[1.518vh] w-[22.7vh] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">
                             About me
                         </div>
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[4.4vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
+                            className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#0077b5"
                             href="https://www.linkedin.com/in/your-profile"
                             icon="devicon-linkedin-plain"
                             text="LinkedIn"
-                            iconSize="text-[5.5vw] md:text-[3.25vw]"
-                            textSize="text-[3.3vw] md:text-[1.3vw]"
+                            iconSize="text-[2.53vh] md:text-[3.25vw]"
+                            textSize="text-[1.518vh] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[9.9vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
+                            className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#6e5494"
                             href="https://github.com/your-username"
                             icon="devicon-github-original"
                             text="GitHub"
-                            iconSize="text-[5.5vw] md:text-[3.25vw]"
-                            textSize="text-[3.3vw] md:text-[1.3vw]"
+                            iconSize="text-[2.53vh] md:text-[3.25vw]"
+                            textSize="text-[1.518vh] md:text-[1.3vw]"
                         />
                         <GlowButton 
-                            className="absolute left-[53.9vw] top-[16.5vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
+                            className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#E4405F"
                             href="https://www.instagram.com/your-username"
                             icon={<Instagram className="w-[5.5vw] h-[5.5vw] md:w-[3.25vw] md:h-[3.25vw]" />}
                             text="Instagram"
-                            textSize="text-[3.3vw] md:text-[1.3vw]"
+                            textSize="text-[1.518vh] md:text-[1.3vw]"
                         />
                     </div>
                 </div>
@@ -177,7 +177,7 @@ const AboutSection = () => {
                     <CarouselContent>
                         {images.map((image, index) => (
                             <CarouselItem key={index} className="md:pl-0 basis-1/5 md:basis-1/5 ">
-                                <div className="relative group  h-[50vw] md:h-[17vw] ">
+                                <div className="relative group  h-[23vh] md:h-[17vw] ">
                                     <div className="aspect-[3/4] rounded-lg h-full overflow-hidden">
                                         <img 
                                             src={image} 

@@ -185,7 +185,7 @@ const ExamplePage = () => {
                 style={{ pointerEvents: "none" }}>
             </Waves>
             <div className="flex h-screen relative z-10 items-center justify-center">
-                <div className="relative flex items-center -translate-x-[0.85vh] md:-translate-x-[2vw]">
+                <div className="relative flex items-center -translate-x-[1.85vw] md:-translate-x-[2vw]">
                     <div className="relative">
                         <div className={`transition-all duration-1000 overflow-hidden ${
                             activeTab ? 'opacity-100 pointer-events-none' : 'opacity-100 pointer-events-auto'
