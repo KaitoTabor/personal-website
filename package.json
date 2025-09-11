@@ -22,11 +22,8 @@
     "@vitest/ui": "^3.0.9",
     "@yarnpkg/pnpify": "^4.1.4",
     "eslint": "^9.31.0",
-    "eslint-config-custom": "workspace:*",
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
-    "prettier-config-custom": "workspace:*",
-    "ts-config-custom": "workspace:*",
     "turbo": "*",
     "typescript": "^5.8.2",
     "vitest": "^3.0.9"
