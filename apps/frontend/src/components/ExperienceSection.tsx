@@ -81,8 +81,8 @@ const ExperienceSection = () => {
                                 <CardContent 
                                     className="p-[0vh] md:px-[0.8vw]"
                                     style={{
-                                        paddingTop: `${dynamicPadding}vw`,
-                                        paddingBottom: `${dynamicPadding}vw`
+                                        paddingTop: `${dynamicPadding}vh md:${dynamicPadding}vw`,
+                                        paddingBottom: `${dynamicPadding}vh md:${dynamicPadding}vw`
                                     }}
                                 >
                                     <div className="flex flex-col md:flex-row md:justify-between md:items-start">
@@ -108,7 +108,7 @@ const ExperienceSection = () => {
                                     </div>
                                     <div className={`overflow-hidden transition-all duration-500 ease-out ${
                                         expandedIndex === index 
-                                            ? 'max-h-[18vh] md:max-h-[15vw] opacity-100 mt-[0.5vh] md:mt-[0vw]' 
+                                            ? 'max-h-[19vh] md:max-h-[15vw] opacity-100 mt-[0.5vh] md:mt-[0vw]' 
                                             : 'max-h-0 opacity-0'
                                     }`}>
                                         <div className="border-t border-white/20 pt-[0.5vh] md:pt-[0.5vw] space-y-[0.5vh] md:space-y-[0vw]">
