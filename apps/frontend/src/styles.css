@@ -8,6 +8,8 @@
     font-size: 18px;
     line-height: 1.4;
 
+    --vh: 1dvh;
+    --vw: 1dvw;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
