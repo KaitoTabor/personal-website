@@ -12,7 +12,7 @@ const useResponsiveYOffset = () => {
             if (width >= 768) {
                 setYOffset(-400);
             } else {
-                setYOffset(700);
+                setYOffset(750);
             }
         };
         updateYOffset();
@@ -22,16 +22,15 @@ const useResponsiveYOffset = () => {
     return yOffset;
 };
 const images = [
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
+    '/me.jpg',
+    '/dog.jpg',
+    '/repo.jpg',
+    '/gunpla.jpg',
+    '/hxh.jpg',
+    '/chi_bread.jpg',
+    '/usagi.jpg',
+    '/tower.jpg',
+    '/cat.jpg',
 ]
 const AboutSection = () => {
     const [api, setApi] = useState<CarouselApi>()
@@ -85,7 +84,7 @@ const AboutSection = () => {
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
                     <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[90vw] h-[60vw] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[45vw] h-[30vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[67.5vw] h-[45vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
                                  style={{
                                      backgroundImage: "url('/idea1.jpg')",
                                      backgroundSize: "cover",
@@ -109,7 +108,7 @@ const AboutSection = () => {
                             <div className="absolute  font-kanji w-full flex justify-start left-[2.36vw] top-[16.5vw] text-[12vw] md:left-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
                                 Kaito
                             </div>
-                            <div className="absolute  font-kanji w-full flex justify-end right-[0.15vw] top-[16.5vw] text-[12vw] md:right-[0.05vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
+                            <div className="absolute  font-kanji w-full flex justify-end right-[2.36vw] top-[16.5vw] text-[12vw] md:right-[0.5vw] md:top-[5.5vw] md:text-[4vw] text-white z-10">
                                 Tabor
                             </div>
                             <div className="absolute  font-kanji w-full flex  top-[0vw]  left-[67.2vw] text-[6vw] md:left-[22.4vw] md:text-[2vw] text-white z-10">
