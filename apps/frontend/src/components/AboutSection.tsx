@@ -117,12 +117,11 @@ const AboutSection = () => {
                         </CardContent>
                     </Card>
                 </div>
-                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems. */}
                 <div className="flex justify-center mb-[2.3vh] md:mb-[5vw]">
                     <div className="absolute shadow-0 overflow-hidden rounded-lg w-[40.48vh] h-[21.252vh] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
                         <div className="absolute inset-0 flex items-center justify-start left-[1.012vh] md:left-[0.65vw]">
                             <div className="text-gray-200 text-[1.058vh] w-[21.578vh] md:px-[2.34vw] md:text-[0.85vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
-                                test
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems.
                             </div>
                         </div>
                         <div className="absolute text-white top-[1.012vh] left-[1.408vh] text-[1.518vh] w-[22.7vh] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">

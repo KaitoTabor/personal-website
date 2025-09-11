@@ -130,7 +130,7 @@ const SkillsSection = () => {
                             {skills.map((skill, index) => (
                                 <div 
                                     key={index}
-                                    className="flex items-center gap-[0.5vh] md:gap-[0.3vw] p-[0.5vh] md:p-[0.4vw] rounded-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 transition-all duration-300 group whitespace-nowrap"
+                                    className="flex items-center gap-[0.2vh] md:gap-[0.3vw] p-[0.2vh] md:p-[0.4vw] rounded-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 transition-all duration-300 group whitespace-nowrap"
                                 >
                                     {skill.icon}
                                     <span className="text-white text-[1.2vh] md:text-[0.9vw] font-medium group-hover:text-cyan-300 transition-colors">
