@@ -82,9 +82,9 @@ const AboutSection = () => {
         <div className="flex justify-center w-full overflow-visible z-10">
             <div className="relative items-center w-full overflow-visible">
                 <div className="flex flex-col items-center justify-center p-[2vh]  md:p-[2.5vw] ">
-                    <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[41.4vw] h-[27.6vh] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
+                    <Card className="rounded-none absolute  md:left-[2vw] overflow-hidden w-[41.4vh] h-[27.6vh] top-[5vh] md:top-[5vw] md:w-[30vw] md:h-[20vw] bg-[rgba(35,37,41,1)] border-[rgba(35,37,41,1)] border-1 shadow-lg shadow-[rgb(0_0_0)]">
                         <CardContent className="p-0 w-full h-full flex items-center justify-center">
-                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[31.05vw] h-[20.7vw] md:w-[22.5vw] md:h-[15vw] border-white z-10"
+                            <div className="rounded-none shadow-0 absolute overflow-hidden w-[31.05vh] h-[20.7vh] md:w-[22.5vw] md:h-[15vw] border-white z-10"
                                  style={{
                                      backgroundImage: "url('/idea1.jpg')",
                                      backgroundSize: "cover",
@@ -117,11 +117,12 @@ const AboutSection = () => {
                         </CardContent>
                     </Card>
                 </div>
+                {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems. */}
                 <div className="flex justify-center mb-[2.3vh] md:mb-[5vw]">
                     <div className="absolute shadow-0 overflow-hidden rounded-lg w-[40.48vh] h-[21.252vh] top-[35vh] md:w-[33vw] md:h-[17.55vw] md:top-[6vw] md:right-[1vw] backdrop-blur-md bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 hover:border-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/20 transition-all duration-300 z-10 group">
                         <div className="absolute inset-0 flex items-center justify-start left-[1.012vh] md:left-[0.65vw]">
                             <div className="text-gray-200 text-[1.058vh] w-[21.578vh] md:px-[2.34vw] md:text-[0.85vw] md:w-[19.5vw] md:px-[1.95vw] leading-relaxed">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Japanese and American bilingual data scientist and developer from Palo Alto, CA. Passionate about exploring machine learning and deep learning to create meaningful applications that make a difference. Always eager to learn new technologies and solve complex problems.
+                                test
                             </div>
                         </div>
                         <div className="absolute text-white top-[1.012vh] left-[1.408vh] text-[1.518vh] w-[22.7vh] md:top-[0.65vw] md:left-[0.65vw] md:px-[2.34vw] md:text-[1.3vw] md:w-[19.5vw] md:px-[1.95vw] font-bold group-hover:text-cyan-300 transition-colors">
