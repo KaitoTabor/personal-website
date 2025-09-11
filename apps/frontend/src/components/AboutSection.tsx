@@ -22,16 +22,16 @@ const useResponsiveYOffset = () => {
     return yOffset;
 };
 const images = [
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
-    "https:
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80"
 ]
 const AboutSection = () => {
     const [api, setApi] = useState<CarouselApi>()
@@ -131,7 +131,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[53.9vw] top-[4.4vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#0077b5"
-                            href="https:
+                            href="https://www.linkedin.com/in/your-profile"
                             icon="devicon-linkedin-plain"
                             text="LinkedIn"
                             iconSize="text-[5.5vw] md:text-[3.25vw]"
@@ -140,7 +140,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[53.9vw] top-[9.9vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#6e5494"
-                            href="https:
+                            href="https://github.com/your-username"
                             icon="devicon-github-original"
                             text="GitHub"
                             iconSize="text-[5.5vw] md:text-[3.25vw]"
@@ -149,7 +149,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[53.9vw] top-[16.5vw] h-[8.8vw] w-[26.4vw] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#E4405F"
-                            href="https:
+                            href="https://www.instagram.com/your-username"
                             icon={<Instagram className="w-[5.5vw] h-[5.5vw] md:w-[3.25vw] md:h-[3.25vw]" />}
                             text="Instagram"
                             textSize="text-[3.3vw] md:text-[1.3vw]"

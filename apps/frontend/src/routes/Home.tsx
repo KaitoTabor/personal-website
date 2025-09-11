@@ -361,7 +361,7 @@ const ExamplePage = () => {
                     )}
                 </div>
                 <a
-                    href="https:
+                    href="https://github.com/KaitoTabor"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 p-[1vh] md:p-[1vw] rounded-full transition-all duration-300 transform hover:scale-110"
@@ -377,7 +377,7 @@ const ExamplePage = () => {
                     </svg>
                 </a>
                 <a
-                    href="https:
+                    href="https://linkedin.com/in/kaito-tabor"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 shadow-lg hover:shadow-xl hover:shadow-cyan-400/20 p-[1vh] md:p-[1vw] rounded-full transition-all duration-300 transform hover:scale-110"

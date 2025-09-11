@@ -14,13 +14,13 @@ const icon = (
   </svg>
 );
 const defaultCards: CardData[] = [
-  { image: 'https:
-  { image: 'https:
-  { image: 'https:
-  { image: 'https:
-  { image: 'https:
-  { image: 'https:
-  { image: 'https:
+  { image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80', title: 'Ocean', description: 'A beautiful view of the ocean at sunset.', link: '#', linkLabel: 'Learn more', icon },
+  { image: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', title: 'Forest', description: 'A tranquil forest with tall trees.', link: '#', linkLabel: 'Explore', icon },
+  { image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80', title: 'Mountains', description: 'Snow-capped mountains under a clear sky.', link: '#', linkLabel: 'Discover', icon },
+  { image: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80', title: 'Desert', description: 'Golden sands stretching to the horizon.', link: '#', linkLabel: 'See more', icon },
+  { image: 'https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=600&q=80', title: 'City', description: 'A bustling city skyline at night.', link: '#', linkLabel: 'Visit', icon },
+  { image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80', title: 'Waves', description: 'Dynamic ocean waves in motion.', link: '#', linkLabel: 'Dive in', icon },
+  { image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=600&q=80', title: 'Aurora', description: 'The northern lights shine brightly.', link: '#', linkLabel: 'View', icon },
 ];
 let injected = false;
 const injectCSS = () => {

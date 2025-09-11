@@ -4,26 +4,26 @@ const SkillsSection = () => {
     const [hoveredProject, setHoveredProject] = useState<number | null>(null);
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
     const skills = [
-        { name: "React", icon: <img src="https:
-        { name: "TypeScript", icon: <img src="https:
-        { name: "Python", icon: <img src="https:
-        { name: "Node.js", icon: <img src="https:
-        { name: "AWS", icon: <img src="https:
-        { name: "Docker", icon: <img src="https:
-        { name: "PostgreSQL", icon: <img src="https:
-        { name: "MongoDB", icon: <img src="https:
-        { name: "Git", icon: <img src="https:
-        { name: "TensorFlow", icon: <img src="https:
-        { name: "PyTorch", icon: <img src="https:
-        { name: "Express", icon: <img src="https:
-        { name: "Tailwind", icon: <img src="https:
-        { name: "Vite", icon: <img src="https:
-        { name: "Prisma", icon: <img src="https:
-        { name: "Kubernetes", icon: <img src="https:
-        { name: "Redis", icon: <img src="https:
-        { name: "GraphQL", icon: <img src="https:
-        { name: "Jest", icon: <img src="https:
-        { name: "Figma", icon: <img src="https:
+        { name: "React", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "TypeScript", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Python", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Node.js", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "AWS", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Docker", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "PostgreSQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "MongoDB", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Git", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "TensorFlow", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "PyTorch", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Express", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Tailwind", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Vite", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Prisma", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Kubernetes", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Redis", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "GraphQL", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Jest", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> },
+        { name: "Figma", icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" className="w-[1.5vh] h-[1.5vh] md:w-[1.2vw] md:h-[1.2vw]" /> }
     ];
     const projects = [
         {
@@ -32,8 +32,8 @@ const SkillsSection = () => {
             additionalSkills: 2,
             description: "Modern responsive portfolio featuring sidebar navigation, glass-morphism design, and smooth animations. Built with React and TypeScript for optimal performance.",
             highlights: ["Glass-morphism UI", "Responsive Design", "Smooth Animations", "Modern Architecture"],
-            github: "https:
-            demo: "https:
+            github: "https://github.com/KaitoTabor/personal-website",
+            demo: "https://kaitotabor.dev"
         },
         {
             title: "ML Data Analysis Platform",
@@ -41,8 +41,8 @@ const SkillsSection = () => {
             additionalSkills: 4,
             description: "Scalable machine learning platform for data analysis and model deployment. Features automated pipelines and real-time predictions.",
             highlights: ["ML Pipeline Automation", "Real-time Predictions", "Cloud Deployment", "Data Visualization"],
-            github: "https:
-            demo: null
+             github: "https://github.com/KaitoTabor/ml-platform",
+            github: null
         },
         {
             title: "E-commerce Backend API",
@@ -50,8 +50,8 @@ const SkillsSection = () => {
             additionalSkills: 3,
             description: "RESTful API for e-commerce platform with authentication, payment processing, and inventory management. Dockerized for easy deployment.",
             highlights: ["RESTful Architecture", "Payment Integration", "Inventory Management", "Docker Deployment"],
-            github: "https:
-            demo: null
+            github: "https://github.com/KaitoTabor/ml-platform",
+            github: null
         },
         {
             title: "Real-time Chat Application",
@@ -59,8 +59,8 @@ const SkillsSection = () => {
             additionalSkills: 2,
             description: "Real-time messaging application with file sharing, group chats, and emoji reactions. Features WebSocket communication for instant messaging.",
             highlights: ["Real-time Messaging", "File Sharing", "Group Chats", "WebSocket Communication"],
-            github: "https:
-            demo: "https:
+            github: "https://github.com/KaitoTabor/ml-platform",
+            demo: null
         },
     ];
     return (
