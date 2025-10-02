@@ -3,7 +3,7 @@
 A modern, responsive portfolio website showcasing my work as a Machine Learning Engineer and Software Developer. Built with React, TypeScript, and featuring dynamic animations.
 
 **Live Site:** [ktabor.dev](https://ktabor.dev)
-Currently working on an issue that prevents the wifi from being open on eduroam campus wifi and certain wifi typesd
+Currently working on an issue that prevents the wifi from being open on Eduroam campus wifi and certain wifi types
 
 ## Tech Stack
 
