@@ -130,7 +130,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[1.95vw] md:h-[3.25vw] md:w-[9.75vw] md:text-[6.5vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#0077b5"
-                            href="https://www.linkedin.com/in/your-profile"
+                            href="https://linkedin.com/m/in/kaito-tabor"
                             icon="devicon-linkedin-plain"
                             text="LinkedIn"
                             iconSize="text-[2.53vh] md:text-[3.25vw]"
@@ -139,7 +139,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[3.25vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#6e5494"
-                            href="https://github.com/your-username"
+                            href="https://github.com/KaitoTabor"
                             icon="devicon-github-original"
                             text="GitHub"
                             iconSize="text-[2.53vh] md:text-[3.25vw]"
@@ -148,7 +148,7 @@ const AboutSection = () => {
                         <GlowButton 
                             className="absolute left-[24.794vh] top-[2.024vh] h-[4.048vh] w-[12.144vh] md:left-[20.8vw] md:top-[4.55vw] md:h-[3.25vw] md:w-[9.75vw] backdrop-blur-sm bg-white/5 hover:bg-white/10 border border-white/20"
                             glowColor="#E4405F"
-                            href="https://www.instagram.com/your-username"
+                            href="https://www.instagram.com/arys_kaito/"
                             icon={<Instagram className="w-[5.5vw] h-[5.5vw] md:w-[3.25vw] md:h-[3.25vw]" />}
                             text="Instagram"
                             textSize="text-[1.518vh] md:text-[1.3vw]"
