@@ -16,7 +16,7 @@ const ExperienceSection = () => {
                 'Building white-hat AI security agent',
                 'Implementing ML-based threat recognition',
                 'Rule-based vulnerability detection',
-      z      ],
+            ],
         },
         {
             title: 'Software Engineering Intern',
