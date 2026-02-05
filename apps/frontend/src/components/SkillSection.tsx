@@ -50,7 +50,8 @@ const SkillsSection = () => {
             description: "Modern responsive portfolio featuring ocean-themed loading animations, glass-morphism design, and smooth transitions. Built with React and TypeScript for optimal performance and user experience.",
             highlights: ["Ocean-themed Animations", "Glass-morphism UI", "Responsive Design", "Smooth Transitions", "Modern Architecture"],
             github: "https://github.com/KaitoTabor/personal-website",
-            demo: "https://ktabor.dev"
+            demo: "https://ktabor.dev",
+            manual: null
         },
         {
             title: "Hospital Navigation & Service Request Web App",
@@ -59,7 +60,8 @@ const SkillsSection = () => {
             description: "WARNING: The AWS instance has not been updated in some time so some API features may be broken.\nLed a 10-person team in building a cloud-based hospital navigation and service request web app for Brigham & Women's Hospital using Agile methods. Built with PERN stack featuring interactive pathfinding, map editor, and voice-activated UI.",
             highlights: ["Team Leadership (10 people)", "Pathfinding & Interactive Maps", "Voice-Activated UI", "AWS EC2 + RDS Deployment", "Dockerized Architecture", "Hospital Workflow Optimization"],
             github: "https://github.com/KaitoTabor/hospital-website",
-            demo: "https://d1c7tggz7ivl8h.cloudfront.net/login"
+            demo: "https://d1c7tggz7ivl8h.cloudfront.net/login",
+            manual: "https://drive.google.com/file/d/1pxqoj9CxIbZJvNwBO8ekU7tQKi9batV9/view?usp=sharing"
         },
         {
             title: "ASL Spelling Detection API",
@@ -68,7 +70,8 @@ const SkillsSection = () => {
             description: "Built a real-time ASL fingerspelling recognition system achieving 96% test accuracy and 98% validation accuracy. Integrated into the Brigham Hospital app to enable ASL-only search functionality for improved accessibility.",
             highlights: ["96% Test Accuracy", "98% Validation Accuracy", "MediaPipe + MLP Pipeline", "Real-time Recognition", "Accessibility Integration", "Custom Data Collection Tool"],
             github: "https://github.com/KaitoTabor/ASL-CV",
-            demo: null
+            demo: null,
+            manual: null
         },
         {
             title: "EASE - Gamified Planner App",
@@ -77,7 +80,8 @@ const SkillsSection = () => {
             description: "Collaborated in a 4-person team to build a gamified planner app that reduces teen stress through interactive task planning. Features a Deep Neural Network achieving 85% accuracy in predicting task difficulty and stress levels.",
             highlights: ["Stress Reduction Focus", "Deep Neural Network", "85% Prediction Accuracy", "Gamified Interface", "Teen Mental Health", "Synthetic Data Training"],
             github: "https://github.com/KaitoTabor/SASEHACK2024",
-            demo: null
+            demo: null,
+            manual: null
         },
     ];
     return (
@@ -188,6 +192,17 @@ const SkillsSection = () => {
                                                     ⚡
                                                 </a>
                                             )}
+                                            {project.manual && (
+                                                <a 
+                                                    href={project.manual} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer"
+                                                    className="text-white/70 hover:text-cyan-300 transition-colors text-[1vh] md:text-[0.8vw]"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    📖
+                                                </a>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap gap-[0.3vh] md:gap-[0.2vw] items-center">
@@ -291,6 +306,17 @@ const SkillsSection = () => {
                                     >
                                         <span>⚡</span>
                                         Live Demo
+                                    </a>
+                                )}
+                                {projects[selectedProject].manual && (
+                                    <a 
+                                        href={projects[selectedProject].manual} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-[0.5vh] md:gap-[0.5vw] bg-white/10 hover:bg-white/20 border border-white/20 hover:border-cyan-400/50 px-[1vh] py-[0.5vh] md:px-[1vw] md:py-[0.5vw] rounded-md text-white hover:text-cyan-300 transition-all duration-300 text-[1.2vh] md:text-[0.9vw]"
+                                    >
+                                        <span>📖</span>
+                                        User Manual
                                     </a>
                                 )}
                             </div>
